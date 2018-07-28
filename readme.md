@@ -19,7 +19,7 @@ If you just wan to see it
 - `php artisan migrate:fresh --seed`
 - `php artisan serve`
 
-If you want to customize the fronten
+If you want to customize the frontend
 
 - `npm install`
 - `npm run watch`
