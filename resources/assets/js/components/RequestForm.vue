@@ -95,7 +95,7 @@
             }
         }, 
         mounted() {
-            axios.get('api/dataplans').then(response => {
+            axios.get('dataplans/basic').then(response => {
                 this.data_plans = response.data;
             });
         },
@@ -111,7 +111,7 @@
         },
         methods: {
             formSubmit() {
-                axios.post('api/servicerequest/create', this.$data.formdata)
+                axios.post('servicerequest/create', this.$data.formdata)
             }
         }
     }

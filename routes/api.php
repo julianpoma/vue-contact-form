@@ -16,9 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/dataplans', function () {
-    return App\DataPlan::all();
-});
-
-Route::post('/servicerequest/create', 'ServiceRequestController@store');

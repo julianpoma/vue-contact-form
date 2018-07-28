@@ -13790,7 +13790,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        axios.get('api/dataplans').then(function (response) {
+        axios.get('dataplans/basic').then(function (response) {
             _this.data_plans = response.data;
         });
     },
@@ -13815,7 +13815,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         formSubmit: function formSubmit() {
-            axios.post('api/servicerequest/create', this.$data.formdata);
+            axios.post('servicerequest/create', this.$data.formdata);
         }
     }
 });

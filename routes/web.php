@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+
+Route::get('/dataplans/basic', 'DataPlanController@basic');
+
+Route::post('/servicerequest/create', 'ServiceRequestController@store');
