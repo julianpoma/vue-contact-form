@@ -1,0 +1,22 @@
+//Define custom variables
+$orange: #f79522;
+
+$primary: $orange;
+$footer-background-color: $orange;
+
+//Import bulma
+@import "~bulma/bulma.sass";
+
+//Custom classes
+h2.subtitle {
+    padding-top: 10px !important;
+}
+.main-section {
+    background-color: #1e73be;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+}
+.footer {
+    padding: 20px 20px;
+}
