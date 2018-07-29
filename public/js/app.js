@@ -13795,6 +13795,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -13817,6 +13837,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             errors: new __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__["a" /* default */](),
 
+            modalshow: false,
+
             data_plans: [],
 
             notification: {
@@ -13824,7 +13846,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 show: false,
                 err: false
             }
-
         };
     },
     mounted: function mounted() {
@@ -14350,9 +14371,17 @@ var render = function() {
                   }
                 }),
                 _vm._v("\n                        He leido y acepto "),
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("todos los terminos y condiciones")
-                ])
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.modalshow = !_vm.modalshow
+                      }
+                    }
+                  },
+                  [_vm._v("todos los terminos y condiciones")]
+                )
               ]),
               _vm._v(" "),
               _vm.errors.has("terms")
@@ -14399,10 +14428,82 @@ var render = function() {
             _vm._v("\n        " + _vm._s(_vm.notification.message) + "\n    ")
           ]
         )
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", class: { "is-active": _vm.modalshow } }, [
+      _c("div", {
+        staticClass: "modal-background",
+        on: {
+          click: function($event) {
+            _vm.modalshow = !_vm.modalshow
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [
+          _vm._v("Terminos y condiciones del servicio.")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("ol", { staticStyle: { padding: "20px 20px" } }, [
+          _c("li", [
+            _vm._v(
+              "El servicio está sujeto a disponibilidad técnica y geográfica, determinado al momento de la instalación. Para más información por favor contáctenos en nuestras oficinas."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "El contrato de suscripción al servicio tiene un periodo mínimo de vigencia de 6 meses."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Los equipos para la prestación del servicio son entregados a modo de comodato – excluye Router WiFi. El abonado es responsable del cuidado y devolución del mismo en perfecto estado a la finalización del contrato. En caso de robo, perdida, destrucción o cualquier otra causa, será responsabilidad del abonado la restitución del equipo o su equivalente económico."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Nuestro personal no realiza soporte técnico sobre los routers, computadoras o cualquier dispositivo del abonado, en caso de desconfiguración, mal uso o cualquier inconveniente. Sin embargo, están a disposición del abonado guías de configuración."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "El costo definido para la instalación es estándar y puede variar según la complejidad de la misma."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Una vez enviado los datos, supone el compromiso de contratación de servicio"
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Nuestros técnicos se contactaran con usted dentro de los próximos 5 días hábiles, desde el envío de la solicitud"
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
