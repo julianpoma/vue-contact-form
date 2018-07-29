@@ -26,6 +26,6 @@ class ServiceRequestController extends Controller
         
         ServiceRequest::create($request->all());
 
-        return ['message' => 'Solicitud enviada con exito. ¡Muchas gracias por ponerse en contacto!'];
+        return response()->json(['message' => 'Solicitud enviada con exito. ¡Muchas gracias por ponerse en contacto!'], 201);
     }
 }

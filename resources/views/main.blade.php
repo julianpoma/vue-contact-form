@@ -12,7 +12,7 @@
 
     <body>
         <div id="app">
-            <section class="hero is-medium has-background-white-ter">
+            <section class="hero is-medium has-background-nova">
                 <div class="hero-body">
                     <div class="container has-text-centered">
                         <img src="{{asset('images/brand.png')}}" alt="" srcset="" width="200px">

@@ -8,15 +8,23 @@ $footer-background-color: $orange;
 @import "~bulma/bulma.sass";
 
 //Custom classes
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
 h2.subtitle {
     padding-top: 10px !important;
 }
 .main-section {
-    background-color: #1e73be;
+    background-color: #26425f;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 50px;
 }
 .footer {
     padding: 20px 20px;
+}
+.has-background-nova {
+    background-color: #eef1f4;
 }

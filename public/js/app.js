@@ -13228,7 +13228,7 @@ exports = module.exports = __webpack_require__(37)(false);
 
 
 // module
-exports.push([module.i, "\n.max {\n    max-width: 600px;\n    margin: auto auto;\n}\n.form {\n    margin-top: -110px;\n}\n@media screen and (max-width: 769px), print {\n.form {\n        margin-top: 38px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.max {\n    max-width: 600px;\n    margin: auto auto;\n}\n.form {\n    margin-top: -110px;\n}\n@media screen and (max-width: 769px), print {\n.form {\n        margin-top: 38px;\n}\n}\n.notif-position {\n    position: fixed;\n    bottom: 15px;\n    right: 15px;\n    width: 275px;\n}\n", ""]);
 
 // exports
 
@@ -13767,6 +13767,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -13784,7 +13790,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 notes: '',
                 terms: false
             },
-            data_plans: []
+            data_plans: [],
+            notification: {
+                message: '',
+                show: false,
+                error: false
+            }
+
         };
     },
     mounted: function mounted() {
@@ -13815,7 +13827,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         formSubmit: function formSubmit() {
-            axios.post('servicerequest/create', this.$data.formdata);
+            var _this4 = this;
+
+            if (this.formdata.terms) {
+                axios.post('servicerequest/create', this.$data.formdata).then(function (response) {
+                    _this4.notification.message = response.data.message;
+                    _this4.notification.show = true;
+                    _this4.notification.error = false;
+                }).catch(function (error) {
+                    _this4.notification.show = true;
+                    _this4.notification.message = 'Ha ocurrido un error al intentar enviar su solicitud. Intente nuevamente.';
+                    _this4.notification.error = true;
+                });
+            } else {
+                this.notification.show = true;
+                this.notification.message = 'Debe aceptar los terminos y condiciones.';
+                this.notification.error = true;
+            }
         }
     }
 });
@@ -13828,387 +13856,418 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "columns is-centered" }, [
-    _c("div", { staticClass: "column is-half" }, [
-      _c(
-        "form",
-        {
-          staticClass: "box form max",
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.formSubmit($event)
+  return _c("section", [
+    _c("div", { staticClass: "columns is-centered" }, [
+      _c("div", { staticClass: "column is-half" }, [
+        _c(
+          "form",
+          {
+            staticClass: "box form max",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.formSubmit($event)
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "control" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.name,
-                    expression: "formdata.name"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "name" },
-                domProps: { value: _vm.formdata.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "name", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Apellido")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "control" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.surname,
-                    expression: "formdata.surname"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "surname" },
-                domProps: { value: _vm.formdata.surname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "surname", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Documento (DNI)")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "control" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.dni,
-                    expression: "formdata.dni"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "number", name: "dni" },
-                domProps: { value: _vm.formdata.dni },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "dni", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [
-              _vm._v("Dirección completa")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formdata.address,
-                  expression: "formdata.address"
-                }
-              ],
-              staticClass: "input",
-              attrs: {
-                type: "text",
-                name: "address",
-                placeholder: "Alsina 997, Rosario"
-              },
-              domProps: { value: _vm.formdata.address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formdata, "address", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [
-              _vm._v("Piso / Dpto / Casa")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formdata.address_detail,
-                  expression: "formdata.address_detail"
-                }
-              ],
-              staticClass: "input",
-              attrs: { type: "text", name: "address_detail" },
-              domProps: { value: _vm.formdata.address_detail },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formdata, "address_detail", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Celular")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formdata.phone,
-                  expression: "formdata.phone"
-                }
-              ],
-              staticClass: "input",
-              attrs: { type: "text", name: "phone", placeholder: "0341-" },
-              domProps: { value: _vm.formdata.phone },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formdata, "phone", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [
-              _vm._v("Teléfono alternativo")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formdata.phone2,
-                  expression: "formdata.phone2"
-                }
-              ],
-              staticClass: "input",
-              attrs: { type: "text", name: "phone2" },
-              domProps: { value: _vm.formdata.phone2 },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formdata, "phone2", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Correo")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formdata.email,
-                  expression: "formdata.email"
-                }
-              ],
-              staticClass: "input",
-              attrs: {
-                type: "email",
-                name: "email",
-                placeholder: "example@lincon.com"
-              },
-              domProps: { value: _vm.formdata.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.formdata, "email", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Plan a contratar")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "select is-fullwidth" }, [
-              _c(
-                "select",
-                {
+          },
+          [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.formdata.data_plan,
-                      expression: "formdata.data_plan"
+                      value: _vm.formdata.name,
+                      expression: "formdata.name"
                     }
                   ],
-                  attrs: { name: "data_plan" },
+                  staticClass: "input",
+                  attrs: { type: "text", name: "name" },
+                  domProps: { value: _vm.formdata.name },
                   on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.formdata,
-                        "data_plan",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "name", $event.target.value)
                     }
                   }
-                },
-                _vm._l(_vm.data_plans, function(plan) {
-                  return _c("option", { key: plan.name }, [
-                    _vm._v(_vm._s(plan.name))
-                  ])
                 })
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.formdata.data_plan
-            ? _c("div", { staticClass: "field" }, [
-                _c("div", { staticClass: "notification is-primary" }, [
-                  _vm._v("\n                    Costo de instalación: "),
-                  _c("strong", [
-                    _vm._v("$" + _vm._s(_vm.dataplan_setup_price))
-                  ]),
-                  _vm._v(" -\n                    Abono mensual: "),
-                  _c("strong", [_vm._v("$" + _vm._s(_vm.dataplan_price))])
-                ])
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label" }, [_vm._v("Comentarios")]),
+            ]),
             _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formdata.notes,
-                  expression: "formdata.notes"
-                }
-              ],
-              staticClass: "textarea",
-              attrs: { name: "notes" },
-              domProps: { value: _vm.formdata.notes },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [_vm._v("Apellido")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.surname,
+                      expression: "formdata.surname"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "text", name: "surname" },
+                  domProps: { value: _vm.formdata.surname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "surname", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.formdata, "notes", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "checkbox" }, [
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("Documento (DNI)")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.dni,
+                      expression: "formdata.dni"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "number", name: "dni" },
+                  domProps: { value: _vm.formdata.dni },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "dni", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("Dirección completa")
+              ]),
+              _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formdata.terms,
-                    expression: "formdata.terms"
+                    value: _vm.formdata.address,
+                    expression: "formdata.address"
                   }
                 ],
-                attrs: { type: "checkbox", name: "terms" },
-                domProps: {
-                  checked: Array.isArray(_vm.formdata.terms)
-                    ? _vm._i(_vm.formdata.terms, null) > -1
-                    : _vm.formdata.terms
+                staticClass: "input",
+                attrs: {
+                  type: "text",
+                  name: "address",
+                  placeholder: "Alsina 997, Rosario"
                 },
+                domProps: { value: _vm.formdata.address },
                 on: {
-                  change: function($event) {
-                    var $$a = _vm.formdata.terms,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 &&
-                          _vm.$set(_vm.formdata, "terms", $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          _vm.$set(
-                            _vm.formdata,
-                            "terms",
-                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                          )
-                      }
-                    } else {
-                      _vm.$set(_vm.formdata, "terms", $$c)
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
                     }
+                    _vm.$set(_vm.formdata, "address", $event.target.value)
                   }
                 }
-              }),
-              _vm._v("\n                    He leido y acepto "),
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v("todos los terminos y condiciones")
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("Piso / Dpto / Casa")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.address_detail,
+                    expression: "formdata.address_detail"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", name: "address_detail" },
+                domProps: { value: _vm.formdata.address_detail },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.formdata,
+                      "address_detail",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [_vm._v("Celular")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.phone,
+                    expression: "formdata.phone"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", name: "phone", placeholder: "0341-" },
+                domProps: { value: _vm.formdata.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "phone", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("Teléfono alternativo")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.phone2,
+                    expression: "formdata.phone2"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", name: "phone2" },
+                domProps: { value: _vm.formdata.phone2 },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "phone2", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [_vm._v("Correo")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.email,
+                    expression: "formdata.email"
+                  }
+                ],
+                staticClass: "input",
+                attrs: {
+                  type: "email",
+                  name: "email",
+                  placeholder: "example@lincon.com"
+                },
+                domProps: { value: _vm.formdata.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "email", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("Plan a contratar")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "select is-fullwidth" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formdata.data_plan,
+                        expression: "formdata.data_plan"
+                      }
+                    ],
+                    attrs: { name: "data_plan" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.formdata,
+                          "data_plan",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  _vm._l(_vm.data_plans, function(plan) {
+                    return _c("option", { key: plan.name }, [
+                      _vm._v(_vm._s(plan.name))
+                    ])
+                  })
+                )
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(0)
-        ]
-      )
-    ])
+            ]),
+            _vm._v(" "),
+            _vm.formdata.data_plan
+              ? _c("div", { staticClass: "field" }, [
+                  _c("div", { staticClass: "notification is-primary" }, [
+                    _vm._v("\n                        Costo de instalación: "),
+                    _c("strong", [
+                      _vm._v("$" + _vm._s(_vm.dataplan_setup_price))
+                    ]),
+                    _vm._v(" -\n                        Abono mensual: "),
+                    _c("strong", [_vm._v("$" + _vm._s(_vm.dataplan_price))])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [_vm._v("Comentarios")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.notes,
+                    expression: "formdata.notes"
+                  }
+                ],
+                staticClass: "textarea",
+                attrs: { name: "notes" },
+                domProps: { value: _vm.formdata.notes },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "notes", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "checkbox" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.terms,
+                      expression: "formdata.terms"
+                    }
+                  ],
+                  attrs: { type: "checkbox", name: "terms" },
+                  domProps: {
+                    checked: Array.isArray(_vm.formdata.terms)
+                      ? _vm._i(_vm.formdata.terms, null) > -1
+                      : _vm.formdata.terms
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.formdata.terms,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(_vm.formdata, "terms", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.formdata,
+                              "terms",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.formdata, "terms", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v("\n                        He leido y acepto "),
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("todos los terminos y condiciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.notification.show
+      ? _c(
+          "div",
+          {
+            staticClass: "notification notif-position",
+            class: [{ "is-danger": _vm.notification.error }, "is-success"]
+          },
+          [
+            _c("button", {
+              staticClass: "delete",
+              on: {
+                click: function($event) {
+                  _vm.notification.show = !_vm.notification.show
+                }
+              }
+            }),
+            _vm._v("\n        " + _vm._s(_vm.notification.message) + "\n    ")
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
