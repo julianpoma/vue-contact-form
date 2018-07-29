@@ -13692,6 +13692,8 @@ module.exports = function normalizeComponent (
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modal_vue__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Modal_vue__);
 //
 //
 //
@@ -13797,28 +13799,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: { Modal: __WEBPACK_IMPORTED_MODULE_1__Modal_vue___default.a },
     data: function data() {
         return {
             formdata: {
@@ -13916,594 +13902,543 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
-    _c("div", { staticClass: "columns is-centered" }, [
-      _c("div", { staticClass: "column is-half" }, [
-        _c(
-          "form",
-          {
-            staticClass: "box form max",
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.formSubmit($event)
-              },
-              keydown: function($event) {
-                _vm.errors.clear($event.target.name)
+  return _c(
+    "section",
+    [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-half" }, [
+          _c(
+            "form",
+            {
+              staticClass: "box form max",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.formSubmit($event)
+                },
+                keydown: function($event) {
+                  _vm.errors.clear($event.target.name)
+                }
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.name,
-                    expression: "formdata.name"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "name" },
-                domProps: { value: _vm.formdata.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("name")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("name")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Apellido")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.surname,
-                    expression: "formdata.surname"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "surname" },
-                domProps: { value: _vm.formdata.surname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "surname", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("surname")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("surname")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Documento (DNI)")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.dni,
-                    expression: "formdata.dni"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "number", name: "dni" },
-                domProps: { value: _vm.formdata.dni },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "dni", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("dni")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("dni")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Dirección completa")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.address,
-                    expression: "formdata.address"
-                  }
-                ],
-                staticClass: "input",
-                attrs: {
-                  type: "text",
-                  name: "address",
-                  placeholder: "Alsina 997, Rosario"
-                },
-                domProps: { value: _vm.formdata.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "address", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("address")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("address")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Piso / Dpto / Casa")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.address_detail,
-                    expression: "formdata.address_detail"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "address_detail" },
-                domProps: { value: _vm.formdata.address_detail },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.formdata,
-                      "address_detail",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("address_detail")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("address_detail"))
-                    }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Celular")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.phone,
-                    expression: "formdata.phone"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "phone", placeholder: "0341-" },
-                domProps: { value: _vm.formdata.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "phone", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("phone")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("phone")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Teléfono alternativo")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.phone2,
-                    expression: "formdata.phone2"
-                  }
-                ],
-                staticClass: "input",
-                attrs: { type: "text", name: "phone2" },
-                domProps: { value: _vm.formdata.phone2 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "phone2", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("phone2")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("phone2")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Correo")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.email,
-                    expression: "formdata.email"
-                  }
-                ],
-                staticClass: "input",
-                attrs: {
-                  type: "email",
-                  name: "email",
-                  placeholder: "example@lincon.com"
-                },
-                domProps: { value: _vm.formdata.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "email", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("email")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("email")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Plan a contratar")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "select is-fullwidth" }, [
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formdata.data_plan,
-                        expression: "formdata.data_plan"
-                      }
-                    ],
-                    attrs: { name: "data_plan" },
-                    on: {
-                      click: function($event) {
-                        _vm.errors.clear("data_plan")
-                      },
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.formdata,
-                          "data_plan",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  _vm._l(_vm.data_plans, function(plan) {
-                    return _c("option", { key: plan.name }, [
-                      _vm._v(_vm._s(plan.name))
-                    ])
-                  })
-                )
-              ]),
-              _vm._v(" "),
-              _vm.errors.has("data_plan")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: {
-                      textContent: _vm._s(_vm.errors.get("data_plan"))
-                    }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _vm.formdata.data_plan
-              ? _c("div", { staticClass: "field" }, [
-                  _c("div", { staticClass: "notification is-primary" }, [
-                    _vm._v("\n                        Costo de instalación: "),
-                    _c("strong", [
-                      _vm._v("$" + _vm._s(_vm.dataplan_setup_price))
-                    ]),
-                    _vm._v(" -\n                        Abono mensual: "),
-                    _c("strong", [_vm._v("$" + _vm._s(_vm.dataplan_price))])
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Comentarios")]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formdata.notes,
-                    expression: "formdata.notes"
-                  }
-                ],
-                staticClass: "textarea",
-                attrs: { name: "notes" },
-                domProps: { value: _vm.formdata.notes },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formdata, "notes", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.has("notes")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("notes")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "checkbox" }, [
+            },
+            [
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
+                _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.formdata.terms,
-                      expression: "formdata.terms"
+                      value: _vm.formdata.name,
+                      expression: "formdata.name"
                     }
                   ],
-                  attrs: { type: "checkbox", name: "terms" },
-                  domProps: {
-                    checked: Array.isArray(_vm.formdata.terms)
-                      ? _vm._i(_vm.formdata.terms, null) > -1
-                      : _vm.formdata.terms
-                  },
+                  staticClass: "input",
+                  attrs: { type: "text", name: "name" },
+                  domProps: { value: _vm.formdata.name },
                   on: {
-                    click: function($event) {
-                      _vm.errors.clear("terms")
-                    },
-                    change: function($event) {
-                      var $$a = _vm.formdata.terms,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(_vm.formdata, "terms", $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.formdata,
-                              "terms",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(_vm.formdata, "terms", $$c)
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
+                      _vm.$set(_vm.formdata, "name", $event.target.value)
                     }
                   }
                 }),
-                _vm._v("\n                        He leido y acepto "),
-                _c(
-                  "a",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.modalshow = !_vm.modalshow
-                      }
-                    }
-                  },
-                  [_vm._v("todos los terminos y condiciones")]
-                )
+                _vm._v(" "),
+                _vm.errors.has("name")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: { textContent: _vm._s(_vm.errors.get("name")) }
+                    })
+                  : _vm._e()
               ]),
               _vm._v(" "),
-              _vm.errors.has("terms")
-                ? _c("span", {
-                    staticClass: "help is-danger",
-                    domProps: { textContent: _vm._s(_vm.errors.get("terms")) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("div", { staticClass: "buttons is-centered" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "button is-primary",
-                  attrs: { disabled: _vm.errors.any() }
-                },
-                [_vm._v("ENVIAR SOLICITUD")]
-              )
-            ])
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.notification.show
-      ? _c(
-          "div",
-          {
-            staticClass: "notification position",
-            class: [{ "is-danger": _vm.notification.err }, "is-success"]
-          },
-          [
-            _c("button", {
-              staticClass: "delete",
-              on: {
-                click: function($event) {
-                  _vm.notification.show = !_vm.notification.show
-                }
-              }
-            }),
-            _vm._v("\n        " + _vm._s(_vm.notification.message) + "\n    ")
-          ]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal", class: { "is-active": _vm.modalshow } }, [
-      _c("div", {
-        staticClass: "modal-background",
-        on: {
-          click: function($event) {
-            _vm.modalshow = !_vm.modalshow
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-card" }, [
-      _c("header", { staticClass: "modal-card-head" }, [
-        _c("p", { staticClass: "modal-card-title" }, [
-          _vm._v("Terminos y condiciones del servicio.")
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [_vm._v("Apellido")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.surname,
+                      expression: "formdata.surname"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "text", name: "surname" },
+                  domProps: { value: _vm.formdata.surname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "surname", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("surname")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: {
+                        textContent: _vm._s(_vm.errors.get("surname"))
+                      }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Documento (DNI)")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.dni,
+                      expression: "formdata.dni"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "number", name: "dni" },
+                  domProps: { value: _vm.formdata.dni },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "dni", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("dni")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: { textContent: _vm._s(_vm.errors.get("dni")) }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Dirección completa")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.address,
+                      expression: "formdata.address"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    type: "text",
+                    name: "address",
+                    placeholder: "Alsina 997, Rosario"
+                  },
+                  domProps: { value: _vm.formdata.address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "address", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("address")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: {
+                        textContent: _vm._s(_vm.errors.get("address"))
+                      }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Piso / Dpto / Casa")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.address_detail,
+                      expression: "formdata.address_detail"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "text", name: "address_detail" },
+                  domProps: { value: _vm.formdata.address_detail },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.formdata,
+                        "address_detail",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("address_detail")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: {
+                        textContent: _vm._s(_vm.errors.get("address_detail"))
+                      }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [_vm._v("Celular")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.phone,
+                      expression: "formdata.phone"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "text", name: "phone", placeholder: "0341-" },
+                  domProps: { value: _vm.formdata.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "phone", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("phone")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: { textContent: _vm._s(_vm.errors.get("phone")) }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Teléfono alternativo")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.phone2,
+                      expression: "formdata.phone2"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: { type: "text", name: "phone2" },
+                  domProps: { value: _vm.formdata.phone2 },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "phone2", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("phone2")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: {
+                        textContent: _vm._s(_vm.errors.get("phone2"))
+                      }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [_vm._v("Correo")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.email,
+                      expression: "formdata.email"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    type: "email",
+                    name: "email",
+                    placeholder: "example@lincon.com"
+                  },
+                  domProps: { value: _vm.formdata.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "email", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("email")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: { textContent: _vm._s(_vm.errors.get("email")) }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Plan a contratar")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "select is-fullwidth" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formdata.data_plan,
+                          expression: "formdata.data_plan"
+                        }
+                      ],
+                      attrs: { name: "data_plan" },
+                      on: {
+                        click: function($event) {
+                          _vm.errors.clear("data_plan")
+                        },
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.formdata,
+                            "data_plan",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.data_plans, function(plan) {
+                      return _c("option", { key: plan.name }, [
+                        _vm._v(_vm._s(plan.name))
+                      ])
+                    })
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.errors.has("data_plan")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: {
+                        textContent: _vm._s(_vm.errors.get("data_plan"))
+                      }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm.formdata.data_plan
+                ? _c("div", { staticClass: "field" }, [
+                    _c("div", { staticClass: "notification is-primary" }, [
+                      _vm._v(
+                        "\n                        Costo de instalación: "
+                      ),
+                      _c("strong", [
+                        _vm._v("$" + _vm._s(_vm.dataplan_setup_price))
+                      ]),
+                      _vm._v(" -\n                        Abono mensual: "),
+                      _c("strong", [_vm._v("$" + _vm._s(_vm.dataplan_price))])
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [_vm._v("Comentarios")]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formdata.notes,
+                      expression: "formdata.notes"
+                    }
+                  ],
+                  staticClass: "textarea",
+                  attrs: { name: "notes" },
+                  domProps: { value: _vm.formdata.notes },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formdata, "notes", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("notes")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: { textContent: _vm._s(_vm.errors.get("notes")) }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "checkbox" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formdata.terms,
+                        expression: "formdata.terms"
+                      }
+                    ],
+                    attrs: { type: "checkbox", name: "terms" },
+                    domProps: {
+                      checked: Array.isArray(_vm.formdata.terms)
+                        ? _vm._i(_vm.formdata.terms, null) > -1
+                        : _vm.formdata.terms
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.errors.clear("terms")
+                      },
+                      change: function($event) {
+                        var $$a = _vm.formdata.terms,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.formdata, "terms", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.formdata,
+                                "terms",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.formdata, "terms", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v("\n                        He leido y acepto "),
+                  _c(
+                    "a",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.modalshow = !_vm.modalshow
+                        }
+                      }
+                    },
+                    [_vm._v("todos los terminos y condiciones")]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.errors.has("terms")
+                  ? _c("span", {
+                      staticClass: "help is-danger",
+                      domProps: { textContent: _vm._s(_vm.errors.get("terms")) }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "buttons is-centered" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "button is-primary",
+                    attrs: { disabled: _vm.errors.any() }
+                  },
+                  [_vm._v("ENVIAR SOLICITUD")]
+                )
+              ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
-      _c("section", { staticClass: "modal-card-body" }, [
-        _c("ol", { staticStyle: { padding: "20px 20px" } }, [
-          _c("li", [
-            _vm._v(
-              "El servicio está sujeto a disponibilidad técnica y geográfica, determinado al momento de la instalación. Para más información por favor contáctenos en nuestras oficinas."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "El contrato de suscripción al servicio tiene un periodo mínimo de vigencia de 6 meses."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Los equipos para la prestación del servicio son entregados a modo de comodato – excluye Router WiFi. El abonado es responsable del cuidado y devolución del mismo en perfecto estado a la finalización del contrato. En caso de robo, perdida, destrucción o cualquier otra causa, será responsabilidad del abonado la restitución del equipo o su equivalente económico."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Nuestro personal no realiza soporte técnico sobre los routers, computadoras o cualquier dispositivo del abonado, en caso de desconfiguración, mal uso o cualquier inconveniente. Sin embargo, están a disposición del abonado guías de configuración."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "El costo definido para la instalación es estándar y puede variar según la complejidad de la misma."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Una vez enviado los datos, supone el compromiso de contratación de servicio"
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Nuestros técnicos se contactaran con usted dentro de los próximos 5 días hábiles, desde el envío de la solicitud"
-            )
-          ])
-        ])
-      ])
-    ])
-  }
-]
+      _vm.notification.show
+        ? _c(
+            "div",
+            {
+              staticClass: "notification position",
+              class: [{ "is-danger": _vm.notification.err }, "is-success"]
+            },
+            [
+              _c("button", {
+                staticClass: "delete",
+                on: {
+                  click: function($event) {
+                    _vm.notification.show = !_vm.notification.show
+                  }
+                }
+              }),
+              _vm._v("\n        " + _vm._s(_vm.notification.message) + "\n    ")
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("modal", {
+        attrs: { show: _vm.modalshow },
+        on: {
+          close: function($event) {
+            _vm.modalshow = false
+          }
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -14572,6 +14507,182 @@ var Errors = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Errors);
+
+/***/ }),
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Modal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2c928174", Component.options)
+  } else {
+    hotAPI.reload("data-v-2c928174", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['show']
+
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal", class: { "is-active": _vm.show } }, [
+    _c("div", {
+      staticClass: "modal-background",
+      on: {
+        click: function($event) {
+          _vm.$emit("close")
+        }
+      }
+    }),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [
+          _vm._v("Terminos y condiciones del servicio.")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("ol", { staticStyle: { padding: "20px 20px" } }, [
+          _c("li", [
+            _vm._v(
+              "El servicio está sujeto a disponibilidad técnica y geográfica, determinado al momento de la instalación. Para más información por favor contáctenos en nuestras oficinas."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "El contrato de suscripción al servicio tiene un periodo mínimo de vigencia de 6 meses."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Los equipos para la prestación del servicio son entregados a modo de comodato – excluye Router WiFi. El abonado es responsable del cuidado y devolución del mismo en perfecto estado a la finalización del contrato. En caso de robo, perdida, destrucción o cualquier otra causa, será responsabilidad del abonado la restitución del equipo o su equivalente económico."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Nuestro personal no realiza soporte técnico sobre los routers, computadoras o cualquier dispositivo del abonado, en caso de desconfiguración, mal uso o cualquier inconveniente. Sin embargo, están a disposición del abonado guías de configuración."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "El costo definido para la instalación es estándar y puede variar según la complejidad de la misma."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Una vez enviado los datos, se presume el compromiso de contratación de servicio."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Nuestros asistentes se contactaran con usted dentro de los próximos 5 días hábiles, desde el envío de la solicitud."
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2c928174", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
