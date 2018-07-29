@@ -20,6 +20,7 @@ class ServiceRequestController extends Controller
             'address' => 'required',
             'data_plan' => 'required',
             'dni' => 'required',
+            'terms' => 'accepted',
         ]);
 
         $request['name'] = request('name').' '.request('surname');

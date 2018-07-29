@@ -13228,7 +13228,7 @@ exports = module.exports = __webpack_require__(37)(false);
 
 
 // module
-exports.push([module.i, "\n.max {\n    max-width: 600px;\n    margin: auto auto;\n}\n.form {\n    margin-top: -110px;\n}\n@media screen and (max-width: 769px), print {\n.form {\n        margin-top: 38px;\n}\n}\n.notif-position {\n    position: fixed;\n    bottom: 15px;\n    right: 15px;\n    width: 275px;\n}\n", ""]);
+exports.push([module.i, "\n.max {\n    max-width: 600px;\n    margin: auto auto;\n}\n.form {\n    margin-top: -110px;\n}\n@media screen and (max-width: 769px), print {\n.form {\n        margin-top: 38px;\n}\n}\n.position {\n    position: fixed;\n    bottom: 15px;\n    right: 15px;\n    width: 275px;\n}\n", ""]);
 
 // exports
 
@@ -13691,6 +13691,7 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__ = __webpack_require__(48);
 //
 //
 //
@@ -13773,6 +13774,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -13790,11 +13814,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 notes: '',
                 terms: false
             },
+
+            errors: new __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__["a" /* default */](),
+
             data_plans: [],
+
             notification: {
                 message: '',
                 show: false,
-                error: false
+                err: false
             }
 
         };
@@ -13806,6 +13834,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.data_plans = response.data;
         });
     },
+
 
     computed: {
         dataplan_setup_price: function dataplan_setup_price() {
@@ -13825,25 +13854,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (typeof d != "undefined") return d.price;
         }
     },
+
     methods: {
         formSubmit: function formSubmit() {
             var _this4 = this;
 
-            if (this.formdata.terms) {
-                axios.post('servicerequest/create', this.$data.formdata).then(function (response) {
-                    _this4.notification.message = response.data.message;
-                    _this4.notification.show = true;
-                    _this4.notification.error = false;
-                }).catch(function (error) {
-                    _this4.notification.show = true;
-                    _this4.notification.message = 'Ha ocurrido un error al intentar enviar su solicitud. Intente nuevamente.';
-                    _this4.notification.error = true;
-                });
-            } else {
-                this.notification.show = true;
-                this.notification.message = 'Debe aceptar los terminos y condiciones.';
-                this.notification.error = true;
-            }
+            axios.post('servicerequest/create', this.$data.formdata).then(function (response) {
+                _this4.notification.message = response.data.message;
+                _this4.notification.show = true;
+                _this4.notification.err = false;
+                _this4.clearForm();
+            }).catch(function (err) {
+                _this4.errors.record(err.response.data.errors);
+                _this4.notification.message = 'Ha ocurrido un error al intentar enviar su solicitud';
+                _this4.notification.show = true;
+                _this4.notification.err = true;
+            });
+        },
+        clearForm: function clearForm() {
+            this.formdata.name = '';
+            this.formdata.surname = '';
+            this.formdata.dni = '';
+            this.formdata.address = '';
+            this.formdata.address_detail = '';
+            this.formdata.phone = '';
+            this.formdata.phone2 = '';
+            this.formdata.email = '';
+            this.formdata.data_plan = '';
+            this.formdata.notes = '';
+            this.formdata.terms = false;
         }
     }
 });
@@ -13867,6 +13906,9 @@ var render = function() {
               submit: function($event) {
                 $event.preventDefault()
                 return _vm.formSubmit($event)
+              },
+              keydown: function($event) {
+                _vm.errors.clear($event.target.name)
               }
             }
           },
@@ -13874,57 +13916,67 @@ var render = function() {
             _c("div", { staticClass: "field" }, [
               _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
               _vm._v(" "),
-              _c("div", { staticClass: "control" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formdata.name,
-                      expression: "formdata.name"
-                    }
-                  ],
-                  staticClass: "input",
-                  attrs: { type: "text", name: "name" },
-                  domProps: { value: _vm.formdata.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.formdata, "name", $event.target.value)
-                    }
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.name,
+                    expression: "formdata.name"
                   }
-                })
-              ])
+                ],
+                staticClass: "input",
+                attrs: { type: "text", name: "name" },
+                domProps: { value: _vm.formdata.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.has("name")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("name")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
               _c("label", { staticClass: "label" }, [_vm._v("Apellido")]),
               _vm._v(" "),
-              _c("div", { staticClass: "control" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formdata.surname,
-                      expression: "formdata.surname"
-                    }
-                  ],
-                  staticClass: "input",
-                  attrs: { type: "text", name: "surname" },
-                  domProps: { value: _vm.formdata.surname },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.formdata, "surname", $event.target.value)
-                    }
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.surname,
+                    expression: "formdata.surname"
                   }
-                })
-              ])
+                ],
+                staticClass: "input",
+                attrs: { type: "text", name: "surname" },
+                domProps: { value: _vm.formdata.surname },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "surname", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.has("surname")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("surname")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -13932,29 +13984,34 @@ var render = function() {
                 _vm._v("Documento (DNI)")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "control" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formdata.dni,
-                      expression: "formdata.dni"
-                    }
-                  ],
-                  staticClass: "input",
-                  attrs: { type: "number", name: "dni" },
-                  domProps: { value: _vm.formdata.dni },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.formdata, "dni", $event.target.value)
-                    }
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formdata.dni,
+                    expression: "formdata.dni"
                   }
-                })
-              ])
+                ],
+                staticClass: "input",
+                attrs: { type: "number", name: "dni" },
+                domProps: { value: _vm.formdata.dni },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formdata, "dni", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.has("dni")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("dni")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -13986,7 +14043,14 @@ var render = function() {
                     _vm.$set(_vm.formdata, "address", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors.has("address")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("address")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -14018,7 +14082,16 @@ var render = function() {
                     )
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors.has("address_detail")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.errors.get("address_detail"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -14044,7 +14117,14 @@ var render = function() {
                     _vm.$set(_vm.formdata, "phone", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors.has("phone")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("phone")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -14072,7 +14152,14 @@ var render = function() {
                     _vm.$set(_vm.formdata, "phone2", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors.has("phone2")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("phone2")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -14102,7 +14189,14 @@ var render = function() {
                     _vm.$set(_vm.formdata, "email", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors.has("email")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("email")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -14124,6 +14218,9 @@ var render = function() {
                     ],
                     attrs: { name: "data_plan" },
                     on: {
+                      click: function($event) {
+                        _vm.errors.clear("data_plan")
+                      },
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
                           .call($event.target.options, function(o) {
@@ -14149,7 +14246,16 @@ var render = function() {
                     ])
                   })
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _vm.errors.has("data_plan")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.errors.get("data_plan"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _vm.formdata.data_plan
@@ -14188,7 +14294,14 @@ var render = function() {
                     _vm.$set(_vm.formdata, "notes", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors.has("notes")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("notes")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
@@ -14209,6 +14322,9 @@ var render = function() {
                       : _vm.formdata.terms
                   },
                   on: {
+                    click: function($event) {
+                      _vm.errors.clear("terms")
+                    },
                     change: function($event) {
                       var $$a = _vm.formdata.terms,
                         $$el = $event.target,
@@ -14237,12 +14353,28 @@ var render = function() {
                 _c("a", { attrs: { href: "#" } }, [
                   _vm._v("todos los terminos y condiciones")
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _vm.errors.has("terms")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: { textContent: _vm._s(_vm.errors.get("terms")) }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "buttons is-centered" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-primary",
+                  attrs: { disabled: _vm.errors.any() }
+                },
+                [_vm._v("ENVIAR SOLICITUD")]
+              )
+            ])
           ]
         )
       ])
@@ -14252,8 +14384,8 @@ var render = function() {
       ? _c(
           "div",
           {
-            staticClass: "notification notif-position",
-            class: [{ "is-danger": _vm.notification.error }, "is-success"]
+            staticClass: "notification position",
+            class: [{ "is-danger": _vm.notification.err }, "is-success"]
           },
           [
             _c("button", {
@@ -14270,18 +14402,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "buttons is-centered" }, [
-      _c("button", { staticClass: "button is-primary" }, [
-        _vm._v("ENVIAR SOLICITUD")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -14296,6 +14417,60 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Errors = function () {
+    function Errors() {
+        _classCallCheck(this, Errors);
+
+        this.errors = {};
+    }
+
+    _createClass(Errors, [{
+        key: "get",
+        value: function get(field) {
+            if (this.errors[field]) {
+                return this.errors[field][0];
+            }
+        }
+    }, {
+        key: "record",
+        value: function record(errors) {
+            this.errors = errors;
+        }
+    }, {
+        key: "clear",
+        value: function clear(field) {
+            delete this.errors[field];
+        }
+    }, {
+        key: "has",
+        value: function has(field) {
+            return this.errors.hasOwnProperty(field);
+        }
+    }, {
+        key: "any",
+        value: function any() {
+            return Object.keys(this.errors).length > 0;
+        }
+    }]);
+
+    return Errors;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Errors);
 
 /***/ })
 /******/ ]);
