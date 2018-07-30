@@ -20,7 +20,10 @@
         </div>
         <div class="navbar-menu is-active">
             <div class="navbar-start">
-
+                @guest @else
+                    <a href="" class="navbar-item">Solicitudes</a>
+                    <a href="" class="navbar-item">Planes</a>
+                @endguest
             </div>
             <div class="navbar-end">
                 @guest
