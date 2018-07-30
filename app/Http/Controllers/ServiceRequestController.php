@@ -2,31 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\ServiceRequest;
+use \App\ServiceRequest;
+
 use Illuminate\Http\Request;
 
 class ServiceRequestController extends Controller
 {
-    /**
-     * Store a new serviceRequest in the database
-     */
-    public function store(Request $request)
+    public function __construct()
     {
-        $this->validate(request(), [
-            'name' => 'required',
-            'surname' => 'required',
-            'phone' => 'required',
-            'email' => 'email',
-            'address' => 'required',
-            'data_plan' => 'required',
-            'dni' => 'required',
-            'terms' => 'accepted',
-        ]);
+        $this->middleware('auth');
+    }
 
-        $request['name'] = request('name').' '.request('surname');
-        
-        ServiceRequest::create($request->all());
+    public function getData(Request $request)
+    {
+        $searchValue = request('search');
+        $search_all = request('all');
 
-        return response()->json(['message' => 'Solicitud enviada con exito. ¡Muchas gracias por ponerse en contacto!'], 201);
+        $query = ServiceRequest::select('id', 'name', 'address', 'phone', 'data_plan', 'created_at', 'check');
+
+        if($searchValue != '')
+        {
+            $query->where('name', 'like', '%'.$searchValue.'%')
+                ->orWhere('address', 'like', '%'.$searchValue.'%')
+                ->orWhere('phone', 'like', '%'.$searchValue.'%');
+        }
+
+        if($search_all == "false")
+        {
+            $query->where('check', 0);
+        }
+
+        $model = $query->latest()->paginate(15);
+        $columns = ServiceRequest::$columns;
+        return response()->json(["model" => $model, "columns" => $columns], 200);
     }
 }

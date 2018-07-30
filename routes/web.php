@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {   
     return view('main');
 });
 
-Route::get('/dataplans/basic', 'DataPlanController@basic');
+Route::get('/form/getdataplans', 'FormController@getDataPlans');
+Route::post('/form/create', 'FormController@store');
 
-Route::post('/servicerequest/create', 'ServiceRequestController@store');
+Auth::routes();
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/api/servicerequest', 'ServiceRequestController@getData');

@@ -10,8 +10,15 @@ $footer-background-color: $orange;
 //Custom classes
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-body {
+//Import Font Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+// @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+//Custom CSS
+html, body {
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
 }
 h2.subtitle {
     padding-top: 10px !important;
@@ -32,3 +39,5 @@ a.no-decoration {
     text-decoration: none;
     color: #efefef;
 }
+
+//Datatable styles
