@@ -44,6 +44,19 @@
                 </div>
             </div>
             
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                            <input type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}"> Recordarme</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <br>
             <div class="field">
                 <div class="control has-text-centered">

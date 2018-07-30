@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/dataplans/basic', 'DataPlanController@basic');
-Route::post('/servicerequest/create', 'ServiceRequestController@store');
+Route::get('/form/getdataplans', 'FormController@getDataPlans');
+Route::post('/form/create', 'FormController@store');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
