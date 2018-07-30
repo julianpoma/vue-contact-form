@@ -1,5 +1,5 @@
 <template>
-    <div class="columns has-background-nova" style="padding-bottom: 40px;">
+    <div class="columns">
         <div class="column is-10 is-offset-1">
             <h1 class="title">Solicitudes de servicio</h1>
 

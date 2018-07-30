@@ -43,17 +43,11 @@
         </div>
     </nav>
     
-    <div id="admin" style="margin-top: 40px;">
+    <div id="admin">
         @yield('content')
     </div>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p class="has-text-white" style="font-size:12px;">
-                Created by <strong><a href="http://www.github.com/julianpoma" class="no-decoration" target="_blank">neucoas</a></strong>. Lincon es una marca registradas de Sociedad General de Comunicaciones S.A ® - 2018-2019
-            </p>
-        </div>
-    </footer>
+    @include('layouts.footer')
 
     <script src="{{asset('js/admin.js')}}"></script>
 </body>

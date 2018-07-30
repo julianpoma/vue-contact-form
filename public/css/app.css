@@ -16391,6 +16391,7 @@ h2.subtitle {
 
 .footer {
   padding: 20px 20px;
+  height: 60px;
 }
 
 .has-background-nova {
@@ -16400,5 +16401,11 @@ h2.subtitle {
 a.no-decoration {
   text-decoration: none;
   color: #efefef;
+}
+
+#admin {
+  min-height: calc(100vh - 112px);
+  padding: 30px 0px;
+  background-color: #eef1f4;
 }
 

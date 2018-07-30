@@ -13949,210 +13949,195 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "columns has-background-nova",
-      staticStyle: { "padding-bottom": "40px" }
-    },
-    [
-      _c("div", { staticClass: "column is-10 is-offset-1" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Solicitudes de servicio")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "dt-tools" }, [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-4" }, [
-              _c("div", { staticClass: "field has-addons" }, [
-                _c("div", { staticClass: "control is-expanded" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.tableData.search,
-                        expression: "tableData.search"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Buscar por nombre, dirección o telefono"
-                    },
-                    domProps: { value: _vm.tableData.search },
-                    on: {
-                      keydown: function($event) {
-                        if (
-                          !("button" in $event) &&
-                          _vm._k(
-                            $event.keyCode,
-                            "enter",
-                            13,
-                            $event.key,
-                            "Enter"
-                          )
-                        ) {
-                          return null
-                        }
-                        _vm.fetchData(this.source)
-                      },
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.tableData, "search", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "control" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "button is-primary",
-                      class: [_vm.searching ? "is-loading" : ""],
-                      on: {
-                        click: function($event) {
-                          _vm.search()
-                        }
-                      }
-                    },
-                    [_vm._v("Buscar")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("label", { staticClass: "checkbox dt-filter" }, [
+  return _c("div", { staticClass: "columns" }, [
+    _c("div", { staticClass: "column is-10 is-offset-1" }, [
+      _c("h1", { staticClass: "title" }, [_vm._v("Solicitudes de servicio")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "dt-tools" }, [
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "field has-addons" }, [
+              _c("div", { staticClass: "control is-expanded" }, [
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.tableData.all,
-                      expression: "tableData.all"
+                      value: _vm.tableData.search,
+                      expression: "tableData.search"
                     }
                   ],
-                  attrs: { type: "checkbox" },
-                  domProps: {
-                    checked: Array.isArray(_vm.tableData.all)
-                      ? _vm._i(_vm.tableData.all, null) > -1
-                      : _vm.tableData.all
+                  staticClass: "input",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Buscar por nombre, dirección o telefono"
                   },
+                  domProps: { value: _vm.tableData.search },
                   on: {
-                    change: function($event) {
-                      var $$a = _vm.tableData.all,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(_vm.tableData, "all", $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.tableData,
-                              "all",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(_vm.tableData, "all", $$c)
+                    keydown: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
                       }
+                      _vm.fetchData(this.source)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.tableData, "search", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" Mostrar todas las solicitudes\n                    ")
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "button is-primary",
+                    class: [_vm.searching ? "is-loading" : ""],
+                    on: {
+                      click: function($event) {
+                        _vm.search()
+                      }
+                    }
+                  },
+                  [_vm._v("Buscar")]
+                )
               ])
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "checkbox dt-filter" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tableData.all,
+                    expression: "tableData.all"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.tableData.all)
+                    ? _vm._i(_vm.tableData.all, null) > -1
+                    : _vm.tableData.all
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.tableData.all,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.tableData, "all", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.tableData,
+                            "all",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.tableData, "all", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(" Mostrar todas las solicitudes\n                    ")
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "box" },
-          [
-            _c(
-              "table",
-              { staticClass: "table is-hoverable is-fullwidth data-table" },
-              [
-                _c(
-                  "thead",
-                  [
-                    _vm._l(_vm.columns, function(col) {
-                      return _c("th", { key: col }, [_vm._v(_vm._s(col))])
-                    }),
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "box" },
+        [
+          _c(
+            "table",
+            { staticClass: "table is-hoverable is-fullwidth data-table" },
+            [
+              _c(
+                "thead",
+                [
+                  _vm._l(_vm.columns, function(col) {
+                    return _c("th", { key: col }, [_vm._v(_vm._s(col))])
+                  }),
+                  _vm._v(" "),
+                  _c("th")
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.model.data, function(row) {
+                  return _c("tr", { key: row.id }, [
+                    _c("td", [_vm._v(_vm._s(row.name))]),
                     _vm._v(" "),
-                    _c("th")
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.model.data, function(row) {
-                    return _c("tr", { key: row.id }, [
-                      _c("td", [_vm._v(_vm._s(row.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(row.address))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(row.phone))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(row.data_plan))]),
-                      _vm._v(" "),
-                      _c("td", { attrs: { width: "120px" } }, [
-                        _vm._v(_vm._s(row.created_at))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "has-text-right",
-                          attrs: { width: "100px" }
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "icon is-size-4",
-                              class: [
-                                row.check
-                                  ? "has-text-success"
-                                  : "has-text-light"
-                              ]
-                            },
-                            [_c("i", { staticClass: "fas fa-check-circle" })]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(0, true)
-                        ]
-                      )
-                    ])
-                  })
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("pagination", {
-              attrs: { pagination: _vm.pagination },
-              on: {
-                prev: function($event) {
-                  _vm.fetchData(_vm.pagination.prevPageUrl)
-                },
-                next: function($event) {
-                  _vm.fetchData(_vm.pagination.nextPageUrl)
-                }
+                    _c("td", [_vm._v(_vm._s(row.address))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(row.phone))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(row.data_plan))]),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "120px" } }, [
+                      _vm._v(_vm._s(row.created_at))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "has-text-right",
+                        attrs: { width: "100px" }
+                      },
+                      [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "icon is-size-4",
+                            class: [
+                              row.check ? "has-text-success" : "has-text-light"
+                            ]
+                          },
+                          [_c("i", { staticClass: "fas fa-check-circle" })]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(0, true)
+                      ]
+                    )
+                  ])
+                })
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { pagination: _vm.pagination },
+            on: {
+              prev: function($event) {
+                _vm.fetchData(_vm.pagination.prevPageUrl)
+              },
+              next: function($event) {
+                _vm.fetchData(_vm.pagination.nextPageUrl)
               }
-            })
-          ],
-          1
-        )
-      ])
-    ]
-  )
+            }
+          })
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
