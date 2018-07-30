@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {   
     return view('main');
 });
 
 Route::get('/dataplans/basic', 'DataPlanController@basic');
-
 Route::post('/servicerequest/create', 'ServiceRequestController@store');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

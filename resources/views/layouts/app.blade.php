@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Admin panel</title>
+
+    <!-- Scripts -->
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+
+<body class="has-background-nova">
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:15px; padding-right: 15px;">
+        <div class="navbar-brand">
+            <p class="navbar-item title is-5" style="font-weight: 700;">AdminPanel</p>
+        </div>
+        <div class="navbar-menu is-active">
+            <div class="navbar-start">
+
+            </div>
+            <div class="navbar-end">
+                @guest
+                    <a class="navbar-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                @else
+                    <a class="navbar-item">{{ Auth::user()->name }}</a>
+                    <a class="navbar-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endguest
+            </div>
+        </div>
+    </nav>
+    
+    <div id="admin" style="margin-top: 40px;">
+        @yield('content')
+    </div>
+
+    <style>
+        html, body {
+            height: 100%;
+            padding: 0px 0px;
+            margin: 0px 0px;
+        }
+    </style>
+</body>
+</html>
