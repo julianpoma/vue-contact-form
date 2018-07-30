@@ -6,31 +6,49 @@
     <div class="column is-half is-offset-one-quarter">
         <h1 class="title">Login</h1>
         <div class="box">
+            <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+            @csrf
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Email</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input id="email" class="input" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                        </div>
+                        <p class="help is-danger">
+                             @if ($errors->has('email'))
+                                {{ $errors->first('email') }}
+                            @endif
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Contraseña</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                        	<input class="input" type="password" name="password" required>
+                        </div>
+                        <p class="help is-danger">
+                             @if ($errors->has('password'))
+                                {{ $errors->first('password') }}
+                            @endif
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <br>
             <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </p>
+                <div class="control has-text-centered">
+                    <button class="button is-primary">LOGIN</button>
                 </div>
-                <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-                </div>
-                <div class="field">
-                <p class="control">
-                    <button class="button is-success">
-                    Login
-                    </button>
-                </p>
             </div>
         </div>
     </div>
@@ -68,7 +86,7 @@
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong></strong>
                                     </span>
                                 @endif
                             </div>
