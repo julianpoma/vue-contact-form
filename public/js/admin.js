@@ -13585,40 +13585,26 @@ module.exports = __webpack_require__(49);
 __webpack_require__(10);
 window.Vue = __webpack_require__(30);
 
-Vue.component('datatable', __webpack_require__(64));
+Vue.component('datatable', __webpack_require__(50));
 
 var admin = new Vue({
     el: '#admin'
 });
 
 /***/ }),
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(65)
+  __webpack_require__(51)
 }
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(67)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(68)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -13657,13 +13643,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 65 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(52);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -13683,7 +13669,7 @@ if(false) {
 }
 
 /***/ }),
-/* 66 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(33)(false);
@@ -13691,13 +13677,189 @@ exports = module.exports = __webpack_require__(33)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 67 */
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datatables_Pagination_vue__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datatables_Pagination_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Datatables_Pagination_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['source'],
+    components: { pagination: __WEBPACK_IMPORTED_MODULE_0__Datatables_Pagination_vue___default.a },
+    data: function data() {
+        return {
+            model: '',
+            columns: '',
+            searching: 1,
+            tableData: {
+                all: false,
+                search: ''
+            },
+            pagination: {
+                lastPage: '',
+                currentPage: '',
+                total: '',
+                lastPageUrl: '',
+                nextPageUrl: '',
+                prevPageUrl: '',
+                from: '',
+                to: ''
+            }
+        };
+    },
+    mounted: function mounted() {
+        this.fetchData();
+    },
+
+    methods: {
+        fetchData: function fetchData() {
+            var _this = this;
+
+            var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.source;
+
+            axios.get(url, { params: this.tableData }).then(function (response) {
+                _this.model = response.data.model;
+                _this.columns = response.data.columns;
+                _this.configPagination(response.data.model);
+                _this.searching = 0;
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        },
+        search: function search() {
+            this.searching = 1;
+            this.fetchData(this.source);
+        },
+        configPagination: function configPagination(data) {
+            this.pagination.lastPage = data.last_page;
+            this.pagination.currentPage = data.current_page;
+            this.pagination.total = data.total;
+            this.pagination.lastPageUrl = data.last_page_url;
+            this.pagination.nextPageUrl = data.next_page_url;
+            this.pagination.prevPageUrl = data.prev_page_url;
+            this.pagination.from = data.from;
+            this.pagination.to = data.to;
+        }
+    }
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\Datatables\\Pagination.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1312dc9a", Component.options)
+  } else {
+    hotAPI.reload("data-v-1312dc9a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13710,32 +13872,298 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            message: 'Hola!'
-        };
-    }
+    props: ['pagination']
 });
 
 /***/ }),
-/* 68 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "columns" }, [
-    _c("div", { staticClass: "column is-three-fifths is-offset-one-fifth" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("Solicitudes de servicio")]),
-      _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
-    ])
-  ])
+  return _c(
+    "nav",
+    {
+      staticClass: "pagination is-rounded is-centered",
+      attrs: { role: "navigation", "aria-label": "pagination" }
+    },
+    [
+      _c(
+        "a",
+        {
+          staticClass: "pagination-previous",
+          on: {
+            click: function($event) {
+              _vm.$emit("prev")
+            }
+          }
+        },
+        [_vm._v("Anterior")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "pagination-next",
+          on: {
+            click: function($event) {
+              _vm.$emit("next")
+            }
+          }
+        },
+        [_vm._v("Siguiente")]
+      ),
+      _vm._v(" "),
+      _c("p", { staticClass: "pagination-list" }, [
+        _vm._v(
+          "Mostrando " +
+            _vm._s(_vm.pagination.from) +
+            " - " +
+            _vm._s(_vm.pagination.to) +
+            " entradas de " +
+            _vm._s(_vm.pagination.total)
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1312dc9a", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "columns has-background-nova",
+      staticStyle: { "padding-bottom": "40px" }
+    },
+    [
+      _c("div", { staticClass: "column is-10 is-offset-1" }, [
+        _c("h1", { staticClass: "title" }, [_vm._v("Solicitudes de servicio")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "dt-tools" }, [
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", { staticClass: "field has-addons" }, [
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.tableData.search,
+                        expression: "tableData.search"
+                      }
+                    ],
+                    staticClass: "input",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Buscar por nombre, dirección o telefono"
+                    },
+                    domProps: { value: _vm.tableData.search },
+                    on: {
+                      keydown: function($event) {
+                        if (
+                          !("button" in $event) &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        _vm.fetchData(this.source)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.tableData, "search", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-primary",
+                      class: [_vm.searching ? "is-loading" : ""],
+                      on: {
+                        click: function($event) {
+                          _vm.search()
+                        }
+                      }
+                    },
+                    [_vm._v("Buscar")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "checkbox dt-filter" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.tableData.all,
+                      expression: "tableData.all"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.tableData.all)
+                      ? _vm._i(_vm.tableData.all, null) > -1
+                      : _vm.tableData.all
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.tableData.all,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(_vm.tableData, "all", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.tableData,
+                              "all",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.tableData, "all", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Mostrar todas las solicitudes\n                    ")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "box" },
+          [
+            _c(
+              "table",
+              { staticClass: "table is-hoverable is-fullwidth data-table" },
+              [
+                _c(
+                  "thead",
+                  [
+                    _vm._l(_vm.columns, function(col) {
+                      return _c("th", { key: col }, [_vm._v(_vm._s(col))])
+                    }),
+                    _vm._v(" "),
+                    _c("th")
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.model.data, function(row) {
+                    return _c("tr", { key: row.id }, [
+                      _c("td", [_vm._v(_vm._s(row.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(row.address))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(row.phone))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(row.data_plan))]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { width: "120px" } }, [
+                        _vm._v(_vm._s(row.created_at))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "has-text-right",
+                          attrs: { width: "100px" }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "icon is-size-4",
+                              class: [
+                                row.check
+                                  ? "has-text-success"
+                                  : "has-text-light"
+                              ]
+                            },
+                            [_c("i", { staticClass: "fas fa-check-circle" })]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(0, true)
+                        ]
+                      )
+                    ])
+                  })
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("pagination", {
+              attrs: { pagination: _vm.pagination },
+              on: {
+                prev: function($event) {
+                  _vm.fetchData(_vm.pagination.prevPageUrl)
+                },
+                next: function($event) {
+                  _vm.fetchData(_vm.pagination.nextPageUrl)
+                }
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon has-text-primary is-size-5" }, [
+      _c("i", { staticClass: "fas fa-eye" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

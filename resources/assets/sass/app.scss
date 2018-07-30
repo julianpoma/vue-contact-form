@@ -16,8 +16,9 @@ $footer-background-color: $orange;
 // @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
 //Custom CSS
-body {
+html, body {
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
 }
 h2.subtitle {
     padding-top: 10px !important;
@@ -38,3 +39,5 @@ a.no-decoration {
     text-decoration: none;
     color: #efefef;
 }
+
+//Datatable styles

@@ -20,3 +20,5 @@ Route::post('/form/create', 'FormController@store');
 
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/api/servicerequest', 'ServiceRequestController@getData');

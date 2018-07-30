@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <datatable></datatable>
+    <datatable source="/api/servicerequest"></datatable>
 @endsection

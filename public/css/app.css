@@ -16372,8 +16372,10 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+html,
 body {
   font-family: 'Montserrat', sans-serif;
+  height: 100%;
 }
 
 h2.subtitle {
