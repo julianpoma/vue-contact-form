@@ -13677,7 +13677,7 @@ exports = module.exports = __webpack_require__(33)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.cursor-pointer {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -13807,6 +13807,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.pagination.prevPageUrl = data.prev_page_url;
             this.pagination.from = data.from;
             this.pagination.to = data.to;
+        },
+        togglCheckRow: function togglCheckRow(id) {
+            var _this2 = this;
+
+            var url = '/api/servicerequest/' + id + '/toggl';
+            this.searching = 1;
+
+            axios.post(url, {}).then(function (resp) {
+                return _this2.fetchData();
+            }).catch(function (err) {
+                return console.log(err);
+            });
         }
     }
 });
@@ -13970,7 +13982,7 @@ var render = function() {
                   staticClass: "input",
                   attrs: {
                     type: "text",
-                    placeholder: "Buscar por nombre, dirección o telefono"
+                    placeholder: "Buscar por nombre, dirección o teléfono"
                   },
                   domProps: { value: _vm.tableData.search },
                   on: {
@@ -14056,7 +14068,6 @@ var render = function() {
           ])
         ])
       ]),
-      _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _c(
@@ -14105,10 +14116,15 @@ var render = function() {
                         _c(
                           "span",
                           {
-                            staticClass: "icon is-size-4",
+                            staticClass: "icon is-size-4 cursor-pointer",
                             class: [
                               row.check ? "has-text-success" : "has-text-light"
-                            ]
+                            ],
+                            on: {
+                              click: function($event) {
+                                _vm.togglCheckRow(row.id)
+                              }
+                            }
                           },
                           [_c("i", { staticClass: "fas fa-check-circle" })]
                         ),
@@ -14144,9 +14160,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon has-text-primary is-size-5" }, [
-      _c("i", { staticClass: "fas fa-eye" })
-    ])
+    return _c(
+      "span",
+      { staticClass: "icon has-text-primary is-size-5 cursor-pointer" },
+      [_c("i", { staticClass: "fas fa-eye" })]
+    )
   }
 ]
 render._withStripped = true

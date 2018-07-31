@@ -15,10 +15,9 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/form/getdataplans', 'FormController@getDataPlans');
-Route::post('/form/create', 'FormController@store');
-
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/api/servicerequest', 'ServiceRequestController@getData');
+Route::get('/api/servicerequest/{service_request}/', 'ServiceRequestController@show');
+Route::post('/api/servicerequest/{service_request}/toggl', 'ServiceRequestController@togglServiceRequest');

@@ -13837,7 +13837,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        axios.get('form/getdataplans').then(function (response) {
+        axios.get('/api/form/getdataplans').then(function (response) {
             _this.data_plans = response.data;
         });
     },
@@ -13866,7 +13866,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formSubmit: function formSubmit() {
             var _this4 = this;
 
-            axios.post('form/create', this.$data.formdata).then(function (response) {
+            axios.post('/api/form/create', this.$data.formdata).then(function (response) {
                 _this4.notification.message = response.data.message;
                 _this4.notification.show = true;
                 _this4.notification.err = false;

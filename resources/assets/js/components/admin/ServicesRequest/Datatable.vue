@@ -8,7 +8,7 @@
                     <div class="column is-4">
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input class="input" type="text" placeholder="Buscar por nombre, dirección o telefono" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
+                                <input class="input" type="text" placeholder="Buscar por nombre, dirección o teléfono" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
                             </div>
                             <div class="control">
                                 <button class="button is-primary" :class="[ searching ? 'is-loading' : '']" @click="search()" >Buscar</button>
@@ -19,8 +19,8 @@
                         </label>
                     </div>
                 </div>               
-            </div>
-            <br>
+            </div><br>
+
             <div class="box">
                 <table class="table is-hoverable is-fullwidth data-table">
                     <thead>
@@ -36,11 +36,11 @@
                             <td>{{row.data_plan}}</td>
                             <td width="120px">{{row.created_at}}</td>
                             <td class="has-text-right" width="100px">
-                                <span class="icon is-size-4" :class="[ row.check ? 'has-text-success': 'has-text-light']">
+                                <span class="icon is-size-4 cursor-pointer" :class="[ row.check ? 'has-text-success': 'has-text-light']" @click="togglCheckRow(row.id)">
                                     <i class="fas fa-check-circle"></i>
                                 </span>
 
-                                <span class="icon has-text-primary is-size-5">
+                                <span class="icon has-text-primary is-size-5 cursor-pointer">
                                     <i class="fas fa-eye"></i>
                                 </span>
                             </td>
@@ -97,10 +97,12 @@
                     })
                     .catch(err => console.log(err));
             },
+
             search() {
                 this.searching = 1;
                 this.fetchData(this.source);
             },
+
             configPagination(data) {
                 this.pagination.lastPage = data.last_page;
                 this.pagination.currentPage = data.current_page;
@@ -111,10 +113,21 @@
                 this.pagination.from = data.from;
                 this.pagination.to = data.to;
             },
+
+            togglCheckRow(id) {
+                let url = '/api/servicerequest/' + id + '/toggl';
+                this.searching = 1;
+
+                axios.post(url, {})
+                    .then(resp => this.fetchData())
+                    .catch(err => console.log(err));
+            }
         }
     }
 </script>
 
 <style>
-
+    .cursor-pointer {
+        cursor: pointer;
+    }
 </style>

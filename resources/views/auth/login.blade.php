@@ -3,61 +3,49 @@
 @section('content')
 
 <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+    <div class="column is-4 is-offset-4">
         <h1 class="title">Login</h1>
         <div class="box">
             <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
             @csrf
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Email</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <input id="email" class="input" type="email" name="email" value="{{ old('email') }}" required autofocus>
-                        </div>
-                        <p class="help is-danger">
-                             @if ($errors->has('email'))
-                                {{ $errors->first('email') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
+        
+            <div class="field">
+                <p class="control has-icons-left">
+                     <input class="input" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </p>
+
+                <p class="help is-danger">
+                        @if ($errors->has('email'))
+                        {{ $errors->first('email') }}
+                    @endif
+                </p>
             </div>
 
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Contraseña</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                        	<input class="input" type="password" name="password" required>
-                        </div>
-                        <p class="help is-danger">
-                             @if ($errors->has('password'))
-                                {{ $errors->first('password') }}
-                            @endif
-                        </p>
-                    </div>
-                </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input" type="password" name="password" placeholder="Contraseña" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+
+                <p class="help is-danger">
+                        @if ($errors->has('password'))
+                        {{ $errors->first('password') }}
+                    @endif
+                </p>
             </div>
             
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <label class="checkbox">
-                            <input type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}"> Recordarme</a>
-                            </label>
-                        </div>
-                    </div>
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                    <input type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}"> Recordarme</a>
+                    </label>
                 </div>
             </div>
-            <br>
             <div class="field">
                 <div class="control has-text-centered">
                     <button class="button is-primary">LOGIN</button>

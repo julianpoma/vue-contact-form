@@ -140,7 +140,7 @@
         }, 
 
         mounted() {
-            axios.get('form/getdataplans').then(response => {
+            axios.get('/api/form/getdataplans').then(response => {
                 this.data_plans = response.data;
             });
         },
@@ -158,7 +158,7 @@
 
         methods: {
             formSubmit() {
-                axios.post('form/create', this.$data.formdata)
+                axios.post('/api/form/create', this.$data.formdata)
                 .then(response => {
                     this.notification.message = response.data.message;
                     this.notification.show = true;

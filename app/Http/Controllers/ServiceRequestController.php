@@ -36,4 +36,18 @@ class ServiceRequestController extends Controller
         $columns = ServiceRequest::$columns;
         return response()->json(["model" => $model, "columns" => $columns], 200);
     }
+
+    public function togglServiceRequest(Request $request, ServiceRequest $service_request)
+    {
+        $service_request->update([
+            'check' => !$service_request->check,
+        ]);
+
+        return response()->json("Updated!", 200);
+    }
+
+    public function show(ServiceRequest $service_request)
+    {
+        return response()->json($service_request, 200);
+    }
 }
