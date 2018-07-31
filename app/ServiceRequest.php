@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Helper\DataViewer;
-
 use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
