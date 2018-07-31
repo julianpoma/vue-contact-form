@@ -12,5 +12,35 @@ class DataPlanController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function getData()
+    {
+        $model = DataPlan::all();
+        $columns = DataPlan::$columns;
+
+        return response()->json([
+            'model' => $model,
+            'columns' => $columns,
+        ], 200);
+    }
+
+    public function store(Request $request)
+    {
+        Dataplan::create($request->all());
+
+        return response()->json("Data Plan created!", 201);
+    }
+
+    public function update(Request $request, DataPlan $dataplan)
+    {
+        return response()->json("Data Plan updated!", 201);
+    }
+
+    public function delete(DataPlan $dataplan)
+    {
+        $dataplan->delete();
+
+        return response()->json("Data Plan deleted!", 201);
+    }
     
 }

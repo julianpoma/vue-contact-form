@@ -54,7 +54,7 @@
                     </tr>
                 </table>
             </div>
-            <button class="button is-primary" @click="goBack()">Volver atrás</button>
+            <button class="button is-primary is-rounded" @click="goBack()">Volver atrás</button>
         </div>
     </div>
 </template>
@@ -69,7 +69,7 @@
             }
         },
         mounted() {
-            this.url = '/api/servicerequest/' + this.$route.params.id;
+            this.url = '/api/servicerequests/' + this.$route.params.id;
             this.fetchData();  
         },
         methods: {

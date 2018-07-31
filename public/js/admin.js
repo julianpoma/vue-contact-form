@@ -16278,6 +16278,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 Vue.component('index-requests', __webpack_require__(74));
 Vue.component('show-requests', __webpack_require__(38));
 Vue.component('index-dataplans', __webpack_require__(79));
+Vue.component('create-dataplans', __webpack_require__(84));
+Vue.component('edit-dataplans', __webpack_require__(87));
 
 new Vue({
     el: '#admin',
@@ -16292,7 +16294,7 @@ new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(36);
 
 
-var routes = [{ path: '/requests', name: 'requests', component: __webpack_require__(74) }, { path: '/requests/:id', name: 'requests-show', component: __webpack_require__(38) }, { path: '/dataplans/', name: 'dataplans', component: __webpack_require__(79) }, { path: '/', redirect: '/requests' }];
+var routes = [{ path: '/requests', name: 'requests', component: __webpack_require__(74) }, { path: '/requests/:id', name: 'requests-show', component: __webpack_require__(38) }, { path: '/dataplans/', name: 'dataplans', component: __webpack_require__(79) }, { path: '/dataplans/create', name: 'dataplans-create', component: __webpack_require__(84) }, { path: '/dataplans/:id/edit', name: 'dataplans-edit', component: __webpack_require__(87) }, { path: '/', redirect: '/requests' }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: routes
@@ -16510,7 +16512,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.url = '/api/servicerequest/' + this.$route.params.id;
+        this.url = '/api/servicerequests/' + this.$route.params.id;
         this.fetchData();
     },
 
@@ -16634,7 +16636,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "button is-primary",
+          staticClass: "button is-primary is-rounded",
           on: {
             click: function($event) {
               _vm.goBack()
@@ -16888,7 +16890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 from: '',
                 to: ''
             },
-            source: '/api/servicerequest'
+            source: '/api/servicerequests'
         };
     },
     mounted: function mounted() {
@@ -16927,7 +16929,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         togglCheckRow: function togglCheckRow(id) {
             var _this2 = this;
 
-            var url = '/api/servicerequest/' + id + '/toggl';
+            var url = '/api/servicerequests/' + id + '/toggl';
             this.searching = 1;
 
             axios.post(url, {}).then(function (resp) {
@@ -17102,7 +17104,7 @@ var render = function() {
                         _c(
                           "span",
                           {
-                            staticClass: "icon is-size-4 cursor-pointer",
+                            staticClass: "icon is-size-5 cursor-pointer",
                             class: [
                               row.check ? "has-text-success" : "has-text-light"
                             ],
@@ -17250,17 +17252,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return {};
+        return {
+            model: '',
+            columns: ''
+        };
     },
     mounted: function mounted() {
         this.fetchData();
     },
 
     methods: {
-        fetchData: function fetchData() {}
+        fetchData: function fetchData() {
+            var _this = this;
+
+            axios.get('/api/dataplans').then(function (response) {
+                _this.model = response.data.model;
+                _this.columns = response.data.columns;
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        },
+        deletePlan: function deletePlan(id) {
+            var _this2 = this;
+
+            axios.delete('/api/dataplans/' + id).then(function (response) {
+                _this2.fetchData();
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        }
     }
 });
 
@@ -17272,25 +17319,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "columns" }, [
+    _c("div", { staticClass: "column is-8 is-offset-2" }, [
+      _c("div", { staticClass: "columns" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column is-4 has-text-right" },
+          [
+            _c("router-link", { attrs: { to: { name: "dataplans-create" } } }, [
+              _c("button", { staticClass: "button is-primary is-rounded" }, [
+                _vm._v("Crear")
+              ])
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [
+        _c(
+          "table",
+          { staticClass: "table is-hoverable is-fullwidth data-table" },
+          [
+            _c(
+              "thead",
+              [
+                _vm._l(_vm.columns, function(col) {
+                  return _c("th", { key: col }, [_vm._v(_vm._s(col))])
+                }),
+                _vm._v(" "),
+                _c("th")
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.model, function(row) {
+                return _c("tr", { key: row.id }, [
+                  _c("td", [_vm._v(_vm._s(row.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("$" + _vm._s(row.price))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("$" + _vm._s(row.setup_price))]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "dataplans-edit",
+                              params: { id: row.id }
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            { staticClass: "icon has-text-grey-lighter" },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "icon has-text-grey-lighter cursor-pointer",
+                          on: {
+                            click: function($event) {
+                              _vm.deletePlan(row.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-trash-alt" })]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              })
+            )
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-8 is-offset-2" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Planes de datos")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c(
-            "table",
-            { staticClass: "table is-hoverable is-fullwidth data-table" },
-            [_c("thead"), _vm._v(" "), _c("tbody")]
-          )
-        ])
-      ])
+    return _c("div", { staticClass: "column is-8" }, [
+      _c("h1", { staticClass: "title" }, [_vm._v("Planes de datos")])
     ])
   }
 ]
@@ -17342,6 +17470,391 @@ exports.push([module.i, "\n.cursor-pointer {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\DataPlans\\Create.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fafcd388", Component.options)
+  } else {
+    hotAPI.reload("data-v-fafcd388", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__routes__ = __webpack_require__(53);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            name: '',
+            price: '',
+            setup_price: ''
+        };
+    },
+
+    methods: {
+        createDataPlan: function createDataPlan() {
+            var _this = this;
+
+            axios.post('/api/dataplans/create', this.$data).then(function (response) {
+                _this.goBack();
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        },
+        goBack: function goBack() {
+            __WEBPACK_IMPORTED_MODULE_0__routes__["a" /* default */].go(-1);
+        }
+    }
+});
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "columns" }, [
+    _c("div", { staticClass: "column is-8 is-offset-2" }, [
+      _c("h1", { staticClass: "title" }, [_vm._v("Crear")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [
+        _c("form", { attrs: { action: "" } }, [
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "control" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  }
+                ],
+                staticClass: "input",
+                attrs: { type: "text", required: "" },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [_vm._v("Precio")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field has-addons" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("p", { staticClass: "control is-expanded" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.price,
+                      expression: "price"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    type: "number",
+                    min: "0",
+                    step: "0.01",
+                    required: ""
+                  },
+                  domProps: { value: _vm.price },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.price = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [
+              _vm._v("Costo de instalación")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field has-addons" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("p", { staticClass: "control is-expanded" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.setup_price,
+                      expression: "setup_price"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    type: "number",
+                    min: "0",
+                    step: "0.01",
+                    required: ""
+                  },
+                  domProps: { value: _vm.setup_price },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.setup_price = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "field is-grouped" }, [
+            _c("p", { staticClass: "control" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "button is-primary is-rounded",
+                  on: { click: _vm.createDataPlan }
+                },
+                [_vm._v("Cargar")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "control" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "button is-light is-rounded",
+                  on: { click: _vm.goBack }
+                },
+                [_vm._v("Calcelar")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "control" }, [
+      _c("a", { staticClass: "button is-static" }, [_vm._v("$")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "control" }, [
+      _c("a", { staticClass: "button is-static" }, [_vm._v("$")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-fafcd388", module.exports)
+  }
+}
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(88)
+/* template */
+var __vue_template__ = __webpack_require__(89)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\DataPlans\\Edit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a57b936c", Component.options)
+  } else {
+    hotAPI.reload("data-v-a57b936c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a57b936c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
