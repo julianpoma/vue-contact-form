@@ -43,17 +43,25 @@
                 </form>
             </div>
         </div>
+
+        <notification color="is-danger" :show="shownotif" @close="shownotif = !shownotif">
+            ¡Ha ocurrido un error!
+        </notification>
     </div>
 </template>
 
 <script>
     import router from '../../../routes';
+    import Notification from '../Shared/Notification.vue';
+
     export default {
+        components: { Notification },
         data() {
             return {
                 name: '',
                 price: '',
                 setup_price: '',
+                shownotif: false,
             }
         },
         methods: {
@@ -62,7 +70,9 @@
                     .then(response => {
                         this.goBack();
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => {
+                        this.shownotif = true;
+                    });
             },
             goBack() {
                 router.go(-1);

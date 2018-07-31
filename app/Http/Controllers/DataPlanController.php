@@ -24,6 +24,11 @@ class DataPlanController extends Controller
         ], 200);
     }
 
+    public function getOne(DataPlan $dataplan)
+    {
+        return response()->json($dataplan, 200);
+    }
+
     public function store(Request $request)
     {
         Dataplan::create($request->all());
@@ -33,6 +38,8 @@ class DataPlanController extends Controller
 
     public function update(Request $request, DataPlan $dataplan)
     {
+        $dataplan->update($request->all());
+        
         return response()->json("Data Plan updated!", 201);
     }
 

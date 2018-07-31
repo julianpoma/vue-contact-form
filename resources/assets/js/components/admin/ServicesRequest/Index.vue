@@ -36,12 +36,12 @@
                             <td>{{row.data_plan}}</td>
                             <td width="120px">{{row.created_at}}</td>
                             <td class="has-text-right" width="100px">
-                                <span class="icon is-size-5 cursor-pointer" :class="[ row.check ? 'has-text-success': 'has-text-light']" @click="togglCheckRow(row.id)">
+                                <span class="icon is-size-5 cursor-pointer" :class="[ row.check ? 'has-text-success': 'has-text-grey-lighter']" @click="togglCheckRow(row.id)">
                                     <i class="fas fa-check-circle"></i>
                                 </span>
 
                                 <router-link :to="{name:'requests-show', params:{ id: row.id }}">
-                                    <span class="icon has-text-primary is-size-5 cursor-pointer">
+                                    <span class="icon has-text-grey-lighter is-size-5 cursor-pointer">
                                         <i class="fas fa-eye"></i>
                                     </span>
                                 </router-link>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-    import Pagination from '../Datatables/Pagination.vue'
+    import Pagination from '../Shared/Pagination.vue'
     export default {
         components: { pagination: Pagination },
         data() {

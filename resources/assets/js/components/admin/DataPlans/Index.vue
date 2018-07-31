@@ -40,15 +40,23 @@
             </div>
             
         </div>
+
+        <notification color="is-danger" :show="shownotif" @close="shownotif = !shownotif">
+            ¡Ha ocurrido un error!
+        </notification>
     </div>
 </template>
 
 <script>
+    import Notification from '../Shared/Notification.vue';
+
     export default {
+        components: { Notification },
         data() {
             return {
                 model: '',
                 columns: '',
+                shownotif: false,
             }
         },
         mounted() {
@@ -61,14 +69,21 @@
                         this.model = response.data.model;
                         this.columns = response.data.columns;
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => {
+                        this.shownotif = true;
+                    });
             },
             deletePlan(id) {
-                axios.delete('/api/dataplans/' + id)
-                    .then(response => {
-                        this.fetchData();
-                    })
-                    .catch(err => console.log(err));
+                if(confirm("Esta seguro?"))
+                {
+                    axios.delete('/api/dataplans/' + id)
+                        .then(response => {
+                            this.fetchData();
+                        })
+                        .catch(err => {
+                            this.shownotif = true;
+                        });
+                }
             }
         }
     }

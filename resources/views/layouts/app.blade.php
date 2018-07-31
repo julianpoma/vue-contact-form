@@ -17,7 +17,7 @@
     <div id="admin">
         <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:15px; padding-right: 15px;">
             <div class="navbar-brand">
-                <p class="navbar-item title is-5" style="font-weight: 700;">AdminPanel</p>
+                <p class="navbar-item title is-5" style="font-weight: 700;">Lincon Dashboard</p>
             </div>
             <div class="navbar-menu is-active">
                 <div class="navbar-start">

@@ -53,19 +53,28 @@
                         <td>{{model.created_at}}</td>
                     </tr>
                 </table>
-            </div>
             <button class="button is-primary is-rounded" @click="goBack()">Volver atrás</button>
+            </div>
         </div>
+
+        <notification color="is-danger" :show="shownotif" @close="shownotif = !shownotif">
+            ¡Ha ocurrido un error!
+        </notification>
+
     </div>
 </template>
 
 <script>
     import router from '../../../routes';
+    import Notification from '../Shared/Notification.vue';
+
     export default {
+        components: { Notification },
         data() {
             return {
                 model: '',
                 url: '',
+                shownotif: false,
             }
         },
         mounted() {
@@ -79,7 +88,9 @@
             togglCheckRow() {
                 axios.post(this.url + '/toggl', {})
                     .then(resp => this.fetchData())
-                    .catch(err => console.log(err));
+                    .catch(err => {
+                        this.shownotif = true;
+                    });
             },
             goBack() {
                 router.go(-1);

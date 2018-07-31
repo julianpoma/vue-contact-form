@@ -13695,8 +13695,10 @@ exports.push([module.i, "\n.max {\n    max-width: 600px;\n    margin: auto auto;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__classes_Errors_js__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modal_vue__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__admin_Shared_Modal_vue__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__admin_Shared_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__admin_Shared_Modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin_Shared_Notification_vue__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin_Shared_Notification_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__admin_Shared_Notification_vue__);
 //
 //
 //
@@ -13801,13 +13803,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { Modal: __WEBPACK_IMPORTED_MODULE_1__Modal_vue___default.a },
+    components: { Modal: __WEBPACK_IMPORTED_MODULE_1__admin_Shared_Modal_vue___default.a, Notification: __WEBPACK_IMPORTED_MODULE_2__admin_Shared_Notification_vue___default.a },
     data: function data() {
         return {
             formdata: {
@@ -13830,10 +13832,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             data_plans: [],
 
-            notification: {
+            notif: {
                 message: '',
                 show: false,
-                err: false
+                color: ''
             }
         };
     },
@@ -13842,6 +13844,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         axios.get('/api/form/getdataplans').then(function (response) {
             _this.data_plans = response.data;
+        }).then().catch(function (err) {
+            _this.notif.message = "¡Ha ocurrido un error!";
+            _this.notif.color = "is-danger";
+            _this.notif.show = true;
         });
     },
 
@@ -13870,15 +13876,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             axios.post('/api/form/create', this.$data.formdata).then(function (response) {
-                _this4.notification.message = response.data.message;
-                _this4.notification.show = true;
-                _this4.notification.err = false;
+                _this4.notif.message = "¡Se ha enviado su solicitud con exito! ¡Gracias por comunicarse con nosotros!";
+                _this4.notif.color = "is-success";
+                _this4.notif.show = true;
                 _this4.clearForm();
             }).catch(function (err) {
                 _this4.errors.record(err.response.data.errors);
-                _this4.notification.message = 'Ha ocurrido un error al intentar enviar su solicitud';
-                _this4.notification.show = true;
-                _this4.notification.err = true;
+                _this4.notif.message = "¡Ha ocurrido un error al enviar la solicitud!";
+                _this4.notif.color = "is-danger";
+                _this4.notif.show = true;
             });
         },
         clearForm: function clearForm() {
@@ -13948,177 +13954,9 @@ var Errors = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Errors);
 
 /***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(47)
-/* template */
-var __vue_template__ = __webpack_require__(48)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Modal.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2c928174", Component.options)
-  } else {
-    hotAPI.reload("data-v-2c928174", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['show']
-
-});
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "modal", class: { "is-active": _vm.show } }, [
-    _c("div", {
-      staticClass: "modal-background",
-      on: {
-        click: function($event) {
-          _vm.$emit("close")
-        }
-      }
-    }),
-    _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-card" }, [
-      _c("header", { staticClass: "modal-card-head" }, [
-        _c("p", { staticClass: "modal-card-title" }, [
-          _vm._v("Terminos y condiciones del servicio.")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "modal-card-body" }, [
-        _c("ol", { staticStyle: { padding: "20px 20px" } }, [
-          _c("li", [
-            _vm._v(
-              "El servicio está sujeto a disponibilidad técnica y geográfica, determinado al momento de la instalación. Para más información por favor contáctenos en nuestras oficinas."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "El contrato de suscripción al servicio tiene un periodo mínimo de vigencia de 6 meses."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Los equipos para la prestación del servicio son entregados a modo de comodato – excluye Router WiFi. El abonado es responsable del cuidado y devolución del mismo en perfecto estado a la finalización del contrato. En caso de robo, perdida, destrucción o cualquier otra causa, será responsabilidad del abonado la restitución del equipo o su equivalente económico."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Nuestro personal no realiza soporte técnico sobre los routers, computadoras o cualquier dispositivo del abonado, en caso de desconfiguración, mal uso o cualquier inconveniente. Sin embargo, están a disposición del abonado guías de configuración."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "El costo definido para la instalación es estándar y puede variar según la complejidad de la misma."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Una vez enviado los datos, se presume el compromiso de contratación de servicio."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Nuestros asistentes se contactaran con usted dentro de los próximos 5 días hábiles, desde el envío de la solicitud."
-            )
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2c928174", module.exports)
-  }
-}
-
-/***/ }),
+/* 46 */,
+/* 47 */,
+/* 48 */,
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14629,26 +14467,18 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.notification.show
-        ? _c(
-            "div",
-            {
-              staticClass: "notification position",
-              class: [{ "is-danger": _vm.notification.err }, "is-success"]
-            },
-            [
-              _c("button", {
-                staticClass: "delete",
-                on: {
-                  click: function($event) {
-                    _vm.notification.show = !_vm.notification.show
-                  }
-                }
-              }),
-              _vm._v("\n        " + _vm._s(_vm.notification.message) + "\n    ")
-            ]
-          )
-        : _vm._e(),
+      _c(
+        "notification",
+        {
+          attrs: { color: _vm.notif.color, show: _vm.notif.show },
+          on: {
+            close: function($event) {
+              _vm.notif.show = !_vm.notif.show
+            }
+          }
+        },
+        [_vm._v("\n        " + _vm._s(_vm.notif.message) + "\n    ")]
+      ),
       _vm._v(" "),
       _c("modal", {
         attrs: { show: _vm.modalshow },
@@ -14677,6 +14507,368 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(91)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(93)
+/* template */
+var __vue_template__ = __webpack_require__(94)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\Shared\\Notification.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4b3f5da4", Component.options)
+  } else {
+    hotAPI.reload("data-v-4b3f5da4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(92);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(34)("543b34ea", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4b3f5da4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Notification.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4b3f5da4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Notification.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(33)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.position {\n    position: fixed;\n    bottom: 75px;\n    right: 15px;\n    width: 275px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['color', 'show']
+});
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c(
+        "div",
+        { staticClass: "notification position", class: this.color },
+        [
+          _c("button", {
+            staticClass: "delete",
+            on: {
+              click: function($event) {
+                _vm.$emit("close")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._t("default")
+        ],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4b3f5da4", module.exports)
+  }
+}
+
+/***/ }),
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(99)
+/* template */
+var __vue_template__ = __webpack_require__(100)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\Shared\\Modal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-18fc75fa", Component.options)
+  } else {
+    hotAPI.reload("data-v-18fc75fa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['show']
+
+});
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal", class: { "is-active": _vm.show } }, [
+    _c("div", {
+      staticClass: "modal-background",
+      on: {
+        click: function($event) {
+          _vm.$emit("close")
+        }
+      }
+    }),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [
+          _vm._v("Terminos y condiciones del servicio.")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("ol", { staticStyle: { padding: "20px 20px" } }, [
+          _c("li", [
+            _vm._v(
+              "El servicio está sujeto a disponibilidad técnica y geográfica, determinado al momento de la instalación. Para más información por favor contáctenos en nuestras oficinas."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "El contrato de suscripción al servicio tiene un periodo mínimo de vigencia de 6 meses."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Los equipos para la prestación del servicio son entregados a modo de comodato – excluye Router WiFi. El abonado es responsable del cuidado y devolución del mismo en perfecto estado a la finalización del contrato. En caso de robo, perdida, destrucción o cualquier otra causa, será responsabilidad del abonado la restitución del equipo o su equivalente económico."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Nuestro personal no realiza soporte técnico sobre los routers, computadoras o cualquier dispositivo del abonado, en caso de desconfiguración, mal uso o cualquier inconveniente. Sin embargo, están a disposición del abonado guías de configuración."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "El costo definido para la instalación es estándar y puede variar según la complejidad de la misma."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Una vez enviado los datos, se presume el compromiso de contratación de servicio."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Nuestros asistentes se contactaran con usted dentro de los próximos 5 días hábiles, desde el envío de la solicitud."
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-18fc75fa", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

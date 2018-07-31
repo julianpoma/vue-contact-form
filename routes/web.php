@@ -23,6 +23,7 @@ Route::get('/api/servicerequests/{service_request}/', 'ServiceRequestController@
 Route::post('/api/servicerequests/{service_request}/toggl', 'ServiceRequestController@togglServiceRequest');
 
 Route::get('/api/dataplans', 'DataPlanController@getData');
+Route::get('/api/dataplans/{dataplan}', 'DataPlanController@getOne');
 Route::post('/api/dataplans/create', 'DataPlanController@store');
 Route::patch('/api/dataplans/{dataplan}/edit', 'DataPlanController@update');
 Route::delete('/api/dataplans/{dataplan}', 'DataPlanController@delete');

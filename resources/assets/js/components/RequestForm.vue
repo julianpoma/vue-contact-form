@@ -92,10 +92,9 @@
             </div>
         </div>
         
-        <div class="notification position" :class="[{ 'is-danger': notification.err }, 'is-success']" v-if="notification.show">
-            <button class="delete" @click="notification.show = !notification.show"></button>
-            {{notification.message}}
-        </div>
+        <notification :color="notif.color" :show="notif.show" @close="notif.show = !notif.show">
+            {{notif.message}}
+        </notification>
 
         <modal :show="modalshow" @close="modalshow = false"></modal>
 
@@ -105,10 +104,11 @@
 
 <script>
     import Errors from '../classes/Errors.js';
-    import Modal from './Modal.vue';
+    import Modal from './admin/Shared/Modal.vue';
+    import Notification from './admin/Shared/Notification.vue';
 
     export default {
-        components: { Modal },
+        components: { Modal, Notification },
         data() {
             return {
                 formdata: {
@@ -131,10 +131,10 @@
 
                 data_plans: [],
 
-                notification: {
+                notif: {
                     message: '',
                     show: false,
-                    err: false,
+                    color: '',
                 }
             }
         }, 
@@ -142,6 +142,12 @@
         mounted() {
             axios.get('/api/form/getdataplans').then(response => {
                 this.data_plans = response.data;
+            })
+            .then()
+            .catch(err => {
+                this.notif.message = "¡Ha ocurrido un error!";
+                this.notif.color = "is-danger";
+                this.notif.show = true;
             });
         },
 
@@ -160,16 +166,16 @@
             formSubmit() {
                 axios.post('/api/form/create', this.$data.formdata)
                 .then(response => {
-                    this.notification.message = response.data.message;
-                    this.notification.show = true;
-                    this.notification.err = false;
+                    this.notif.message = "¡Se ha enviado su solicitud con exito! ¡Gracias por comunicarse con nosotros!";
+                    this.notif.color = "is-success";
+                    this.notif.show = true;
                     this.clearForm();
                 })
                 .catch(err => {
                     this.errors.record(err.response.data.errors);
-                    this.notification.message = 'Ha ocurrido un error al intentar enviar su solicitud';
-                    this.notification.show = true;
-                    this.notification.err = true;
+                    this.notif.message = "¡Ha ocurrido un error al enviar la solicitud!";
+                    this.notif.color = "is-danger";
+                    this.notif.show = true;
                 });
             },
             clearForm() {
