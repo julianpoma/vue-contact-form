@@ -14,37 +14,45 @@
 </head>
 
 <body class="has-background-nova">
-    <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:15px; padding-right: 15px;">
-        <div class="navbar-brand">
-            <p class="navbar-item title is-5" style="font-weight: 700;">AdminPanel</p>
-        </div>
-        <div class="navbar-menu is-active">
-            <div class="navbar-start">
-                @guest @else
-                    <a href="" class="navbar-item">Solicitudes</a>
-                    <a href="" class="navbar-item">Planes</a>
-                @endguest
-            </div>
-            <div class="navbar-end">
-                @guest
-                    <a class="navbar-item" href="{{ route('login') }}">{{ __('Login') }}</a>
-                @else
-                    <a class="navbar-item">{{ Auth::user()->name }}</a>
-                    <a class="navbar-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                @endguest
-            </div>
-        </div>
-    </nav>
-    
     <div id="admin">
-        @yield('content')
+        <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:15px; padding-right: 15px;">
+            <div class="navbar-brand">
+                <p class="navbar-item title is-5" style="font-weight: 700;">AdminPanel</p>
+            </div>
+            <div class="navbar-menu is-active">
+                <div class="navbar-start">
+                    @guest @else
+                        {{-- <a href="" class="navbar-item">Solicitudes</a> --}}
+                        {{-- <a href="" class="navbar-item">Planes</a> --}}
+                        <a class="navbar-item">
+                            <router-link to="/requests">Solicitudes</router-link>
+                        </a>
+                        <a class="navbar-item">
+                            <router-link to="/dataplans">Planes</router-link>
+                        </a>
+                    @endguest
+                </div>
+                <div class="navbar-end">
+                    @guest
+                        <a class="navbar-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    @else
+                        <a class="navbar-item">{{ Auth::user()->name }}</a>
+                        <a class="navbar-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
+                </div>
+            </div>
+        </nav>
+        
+        <div id="content">
+            @yield('content')
+        </div>
     </div>
 
     @include('layouts.footer')

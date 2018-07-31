@@ -1,11 +1,11 @@
 <template>
     <div class="columns">
-        <div class="column is-10 is-offset-1">
+        <div class="column is-8 is-offset-2">
             <h1 class="title">Solicitudes de servicio</h1>
 
             <div class="dt-tools">
                 <div class="columns">
-                    <div class="column is-4">
+                    <div class="column is-5">
                         <div class="field has-addons">
                             <div class="control is-expanded">
                                 <input class="input" type="text" placeholder="Buscar por nombre, dirección o teléfono" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
@@ -40,9 +40,11 @@
                                     <i class="fas fa-check-circle"></i>
                                 </span>
 
-                                <span class="icon has-text-primary is-size-5 cursor-pointer">
-                                    <i class="fas fa-eye"></i>
-                                </span>
+                                <router-link :to="{name:'requests-show', params:{ id: row.id }}">
+                                    <span class="icon has-text-primary is-size-5 cursor-pointer">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                </router-link>
                             </td>
                         </tr>
                     </tbody>
@@ -60,7 +62,6 @@
 <script>
     import Pagination from '../Datatables/Pagination.vue'
     export default {
-        props: ['source'],
         components: { pagination: Pagination },
         data() {
             return {
@@ -81,6 +82,7 @@
                     from: '',
                     to: ''
                 },
+                source: '/api/servicerequest',
             }
         },
         mounted() {
