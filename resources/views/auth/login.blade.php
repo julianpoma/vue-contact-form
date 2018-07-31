@@ -48,7 +48,7 @@
             </div>
             <div class="field">
                 <div class="control has-text-centered">
-                    <button class="button is-primary">LOGIN</button>
+                    <button class="button is-primary is-rounded">Login</button>
                 </div>
             </div>
         </div>
