@@ -14,17 +14,18 @@ Created with:
 - Vue Router
 - Axios
 - Bulma CSS
+- [Vue Google Autocomplete](https://github.com/olefirenko/vue-google-autocomplete)
 
 # Try it out!
 
-If you just wan to see it
-
 - `composer install`
 - Set up your local database
+- Configure the .env file. 
+- Put your [Google API Key](https://console.developers.google.com/) in the .env file (GOOGLE_MAPS setting)
 - `php artisan migrate:fresh --seed`
 - `php artisan serve`
 
-If you want to customize the frontend
+If you want to customize the frontend, remember to compile:
 
 - `npm install`
 - `npm run watch`
