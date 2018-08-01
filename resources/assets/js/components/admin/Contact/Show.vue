@@ -86,7 +86,7 @@
                 axios.get(this.url).then(response => this.model = response.data);
             },
             togglIsRead() {
-                axios.post(this.url + '/toggl', {})
+                axios.post(this.url + '/togglread', {})
                     .then(resp => this.fetchData())
                     .catch(err => {
                         this.shownotif = true;

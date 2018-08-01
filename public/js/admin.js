@@ -16820,7 +16820,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         togglIsRead: function togglIsRead(id) {
             var _this2 = this;
 
-            var url = '/api/contact/' + id + '/toggl';
+            var url = '/api/contact/' + id + '/togglread';
             this.searching = 1;
 
             axios.post(url, {}).then(function (resp) {
@@ -17366,7 +17366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         togglIsRead: function togglIsRead() {
             var _this2 = this;
 
-            axios.post(this.url + '/toggl', {}).then(function (resp) {
+            axios.post(this.url + '/togglread', {}).then(function (resp) {
                 return _this2.fetchData();
             }).catch(function (err) {
                 _this2.shownotif = true;

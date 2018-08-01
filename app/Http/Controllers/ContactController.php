@@ -37,7 +37,7 @@ class ContactController extends Controller
         return response()->json(["model" => $model, "columns" => $columns], 200);
     }
 
-    public function togglContact(Request $request, Contact $contact)
+    public function togglRead(Request $request, Contact $contact)
     {
         $contact->update([
             'is_read' => !$contact->is_read,

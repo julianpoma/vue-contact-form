@@ -120,7 +120,7 @@
                 this.pagination.to = data.to;
             },
             togglIsRead(id) {
-                let url = '/api/contact/' + id + '/toggl';
+                let url = '/api/contact/' + id + '/togglread';
                 this.searching = 1;
 
                 axios.post(url, {})

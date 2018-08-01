@@ -20,7 +20,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/api/contacts', 'ContactController@getData');
 Route::get('/api/contact/{contact}', 'ContactController@show');
-Route::post('/api/contact/{contact}/toggl', 'ContactController@togglContact');
+Route::post('/api/contact/{contact}/togglread', 'ContactController@togglRead');
 Route::delete('/api/contact/{contact}', 'ContactController@destroy');
 
 Route::get('/api/dataplans', 'DataPlanController@getData');
