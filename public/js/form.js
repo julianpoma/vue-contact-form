@@ -13989,7 +13989,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 message: '',
                 show: false,
                 color: ''
-            }
+            },
+            loading: 0
         };
     },
     mounted: function mounted() {
@@ -14028,11 +14029,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formSubmit: function formSubmit() {
             var _this4 = this;
 
+            this.loading = 1;
             axios.post('/api/form/create', this.$data.formdata).then(function (response) {
                 _this4.notif.message = "¡Se ha enviado su solicitud con exito! ¡Gracias por comunicarse con nosotros!";
                 _this4.notif.color = "is-success";
                 _this4.notif.show = true;
                 _this4.clearForm();
+                _this4.loading = 0;
             }).catch(function (err) {
                 _this4.errors.record(err.response.data.errors);
                 _this4.notif.message = "¡Ha ocurrido un error al enviar la solicitud!";
@@ -14777,10 +14780,11 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "button is-primary",
+                    staticClass: "button is-primary is-rounded",
+                    class: [_vm.loading ? "is-loading" : ""],
                     attrs: { disabled: _vm.errors.any() }
                   },
-                  [_vm._v("ENVIAR SOLICITUD")]
+                  [_vm._v("Enviar solicitud")]
                 )
               ])
             ]

@@ -85,7 +85,7 @@
 
                     <br>
                     <div class="buttons is-centered">
-                        <button class="button is-primary" :disabled="errors.any()">ENVIAR SOLICITUD</button>
+                        <button class="button is-primary is-rounded" :class="[ loading ? 'is-loading' : '']" :disabled="errors.any()">Enviar solicitud</button>
                     </div>
 
                 </form>
@@ -135,7 +135,8 @@
                     message: '',
                     show: false,
                     color: '',
-                }
+                },
+                loading: 0,
             }
         }, 
 
@@ -164,12 +165,14 @@
 
         methods: {
             formSubmit() {
+                this.loading = 1;
                 axios.post('/api/form/create', this.$data.formdata)
                 .then(response => {
                     this.notif.message = "¡Se ha enviado su solicitud con exito! ¡Gracias por comunicarse con nosotros!";
                     this.notif.color = "is-success";
                     this.notif.show = true;
                     this.clearForm();
+                    this.loading = 0;
                 })
                 .catch(err => {
                     this.errors.record(err.response.data.errors);
