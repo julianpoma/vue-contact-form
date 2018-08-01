@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
-        <title>Solicitud de servicio | Lincon</title>
+        <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
+        <title>Vue Contact App</title>
         <script src="{{env('GOOGLE_MAPS')}}"></script>
     </head>
 
@@ -15,9 +16,9 @@
             <section class="hero is-medium has-background-nova">
                 <div class="hero-body">
                     <div class="container has-text-centered">
-                        <img src="{{asset('images/brand.png')}}" alt="" srcset="" width="200px">
+                        <img src="{{asset('images/brand.png')}}" alt="" srcset="" width="125px">
                         <h2 class="subtitle">
-                            Nueva solicitud de servicio
+                            Vue Contact App
                         </h2>
                     </div>
                 </div>

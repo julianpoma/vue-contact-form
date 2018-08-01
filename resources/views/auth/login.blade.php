@@ -32,7 +32,7 @@
 
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="password" name="password" placeholder="Contraseña" required>
+                            <input class="input" type="password" name="password" placeholder="Password" required>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -48,7 +48,7 @@
                     <div class="field">
                         <div class="control">
                             <label class="checkbox">
-                            <input type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}"> Recordarme</a>
+                            <input type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}"> Remember me</a>
                             </label>
                         </div>
                     </div>

@@ -16937,7 +16937,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Anterior")]
+        [_vm._v("Previous")]
       ),
       _vm._v(" "),
       _c(
@@ -16950,16 +16950,16 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Siguiente")]
+        [_vm._v("Next")]
       ),
       _vm._v(" "),
       _c("p", { staticClass: "pagination-list" }, [
         _vm._v(
-          "Mostrando " +
+          "Showing " +
             _vm._s(_vm.pagination.from) +
             " - " +
             _vm._s(_vm.pagination.to) +
-            " entradas de " +
+            " rows of " +
             _vm._s(_vm.pagination.total)
         )
       ])
@@ -16986,7 +16986,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "columns" }, [
     _c("div", { staticClass: "column is-8 is-offset-2" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("Solicitudes de servicio")]),
+      _c("h1", { staticClass: "title" }, [_vm._v("Contacts")]),
       _vm._v(" "),
       _c("div", { staticClass: "dt-tools" }, [
         _c("div", { staticClass: "columns" }, [
@@ -17005,7 +17005,7 @@ var render = function() {
                   staticClass: "input is-rounded",
                   attrs: {
                     type: "text",
-                    placeholder: "Buscar por nombre, dirección o teléfono"
+                    placeholder: "Search by name, address or phone"
                   },
                   domProps: { value: _vm.tableData.search },
                   on: {
@@ -17040,7 +17040,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Buscar")]
+                  [_vm._v("Search")]
                 )
               ])
             ]),
@@ -17086,7 +17086,7 @@ var render = function() {
                   }
                 }
               }),
-              _vm._v(" Mostrar todas las solicitudes\n                    ")
+              _vm._v(" Show all\n                    ")
             ])
           ])
         ])
@@ -17394,18 +17394,18 @@ var render = function() {
     { staticClass: "columns" },
     [
       _c("div", { staticClass: "column is-8 is-offset-2" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Detalle")]),
+        _c("h1", { staticClass: "title" }, [_vm._v("Contact detail")]),
         _vm._v(" "),
         _c("div", { staticClass: "box" }, [
           _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
             _c("tr", [
-              _c("th", { attrs: { width: "30%" } }, [_vm._v("Nombre")]),
+              _c("th", { attrs: { width: "30%" } }, [_vm._v("Name")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.name))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Visto")]),
+              _c("th", [_vm._v("Read")]),
               _vm._v(" "),
               _c("td", [
                 _c(
@@ -17425,55 +17425,55 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("DNI")]),
+              _c("th", [_vm._v("Personal ID")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.dni))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Dirección")]),
+              _c("th", [_vm._v("Address")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.address))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Casa / Dpto")]),
+              _c("th", [_vm._v("Address detail")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.address_detail))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Teléfono")]),
+              _c("th", [_vm._v("Phone")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.phone))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Teléfono alternativo")]),
+              _c("th", [_vm._v("Alternative phone")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.phone2))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Correo electrónico")]),
+              _c("th", [_vm._v("Email")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.email))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Plan de datos")]),
+              _c("th", [_vm._v("Selected data plan")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.data_plan))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Comentarios")]),
+              _c("th", [_vm._v("Aditional information")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.notes))])
             ]),
             _vm._v(" "),
             _c("tr", [
-              _c("th", [_vm._v("Fecha de solicitud")]),
+              _c("th", [_vm._v("Date")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm.model.created_at))])
             ])
@@ -17489,7 +17489,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Volver atrás")]
+            [_vm._v("Go back")]
           )
         ])
       ]),
@@ -17504,7 +17504,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        ¡Ha ocurrido un error!\n    ")]
+        [_vm._v("\n        Oops. Something went wrong!\n    ")]
       )
     ],
     1
@@ -17685,7 +17685,7 @@ var render = function() {
                   _c(
                     "button",
                     { staticClass: "button is-primary is-rounded" },
-                    [_vm._v("Crear")]
+                    [_vm._v("Create")]
                   )
                 ]
               )
@@ -17777,7 +17777,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        ¡Ha ocurrido un error!\n    ")]
+        [_vm._v("\n        Oops. Something went wrong!\n    ")]
       )
     ],
     1
@@ -17789,7 +17789,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "column is-8" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("Planes de datos")])
+      _c("h1", { staticClass: "title" }, [_vm._v("Data Plans")])
     ])
   }
 ]
@@ -17907,12 +17907,12 @@ var render = function() {
     { staticClass: "columns" },
     [
       _c("div", { staticClass: "column is-8 is-offset-2" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Crear")]),
+        _c("h1", { staticClass: "title" }, [_vm._v("Create")]),
         _vm._v(" "),
         _c("div", { staticClass: "box" }, [
           _c("form", { attrs: { action: "" } }, [
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
+              _c("label", { staticClass: "label" }, [_vm._v("Name")]),
               _vm._v(" "),
               _c("div", { staticClass: "control" }, [
                 _c("input", {
@@ -17940,7 +17940,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Precio")]),
+              _c("label", { staticClass: "label" }, [_vm._v("Price")]),
               _vm._v(" "),
               _c("div", { staticClass: "field has-addons" }, [
                 _vm._m(0),
@@ -17977,9 +17977,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Costo de instalación")
-              ]),
+              _c("label", { staticClass: "label" }, [_vm._v("Setup price")]),
               _vm._v(" "),
               _c("div", { staticClass: "field has-addons" }, [
                 _vm._m(1),
@@ -18025,7 +18023,7 @@ var render = function() {
                     staticClass: "button is-primary is-rounded",
                     on: { click: _vm.createDataPlan }
                   },
-                  [_vm._v("Cargar")]
+                  [_vm._v("Create")]
                 )
               ]),
               _vm._v(" "),
@@ -18036,7 +18034,7 @@ var render = function() {
                     staticClass: "button is-light is-rounded",
                     on: { click: _vm.goBack }
                   },
-                  [_vm._v("Calcelar")]
+                  [_vm._v("Cancel")]
                 )
               ])
             ])
@@ -18054,7 +18052,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        ¡Ha ocurrido un error!\n    ")]
+        [_vm._v("\n        Oops. Something went wrong!\n    ")]
       )
     ],
     1
@@ -18210,12 +18208,12 @@ var render = function() {
     { staticClass: "columns" },
     [
       _c("div", { staticClass: "column is-8 is-offset-2" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Editar")]),
+        _c("h1", { staticClass: "title" }, [_vm._v("Edit")]),
         _vm._v(" "),
         _c("div", { staticClass: "box" }, [
           _c("form", { attrs: { action: "" } }, [
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
+              _c("label", { staticClass: "label" }, [_vm._v("Name")]),
               _vm._v(" "),
               _c("div", { staticClass: "control" }, [
                 _c("input", {
@@ -18243,7 +18241,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Precio")]),
+              _c("label", { staticClass: "label" }, [_vm._v("Price")]),
               _vm._v(" "),
               _c("div", { staticClass: "field has-addons" }, [
                 _vm._m(0),
@@ -18280,9 +18278,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [
-                _vm._v("Costo de instalación")
-              ]),
+              _c("label", { staticClass: "label" }, [_vm._v("Setup price")]),
               _vm._v(" "),
               _c("div", { staticClass: "field has-addons" }, [
                 _vm._m(1),
@@ -18328,7 +18324,7 @@ var render = function() {
                     staticClass: "button is-primary is-rounded",
                     on: { click: _vm.editDataPlan }
                   },
-                  [_vm._v("Editar")]
+                  [_vm._v("Edit")]
                 )
               ]),
               _vm._v(" "),
@@ -18339,7 +18335,7 @@ var render = function() {
                     staticClass: "button is-light is-rounded",
                     on: { click: _vm.goBack }
                   },
-                  [_vm._v("Calcelar")]
+                  [_vm._v("Cancel")]
                 )
               ])
             ])
@@ -18357,7 +18353,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        ¡Ha ocurrido un error!\n    ")]
+        [_vm._v("\n        Oops. Something went wrong!\n    ")]
       )
     ],
     1

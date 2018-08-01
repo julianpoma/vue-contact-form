@@ -10,12 +10,12 @@ class Contact extends Model
 {
     protected $fillable = ['name', 'dni', 'address', 'phone', 'phone2', 'email', 'notes', 'is_read', 'data_plan', 'address_detail'];
 
-    public static $columns = ['Nombre', 'Dirección', 'Teléfono', 'Plan', 'Fecha'];
+    public static $columns = ['Name', 'Address', 'Phone', 'Data plan', 'Date'];
 
     protected $dates = ['created_at'];
 
     public function getCreatedAtAttribute($date)
     {
-        return Carbon::parse($date)->format('d-m-Y');
+        return Carbon::parse($date)->format('Y-m-d');
     }
 }

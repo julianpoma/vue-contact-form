@@ -3,11 +3,11 @@
         <div class="column is-8 is-offset-2">
             <div class="columns">
                 <div class="column is-8">
-                    <h1 class="title">Planes de datos</h1>
+                    <h1 class="title">Data Plans</h1>
                 </div>
                 <div class="column is-4 has-text-right">
                     <router-link :to="{name: 'dataplan-create'}">
-                        <button class="button is-primary is-rounded">Crear</button>
+                        <button class="button is-primary is-rounded">Create</button>
                     </router-link>
                 </div>
             </div>
@@ -42,7 +42,7 @@
         </div>
 
         <notification color="is-danger" :show="shownotif" @close="shownotif = !shownotif">
-            ¡Ha ocurrido un error!
+            Oops. Something went wrong!
         </notification>
     </div>
 </template>

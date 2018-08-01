@@ -8,5 +8,5 @@ class DataPlan extends Model
 {
     protected $fillable = ['name', 'price', 'setup_price'];
 
-    public static $columns = ['Nombre', 'Precio', 'Instalación'];
+    public static $columns = ['Name', 'Price', 'Setup price'];
 }

@@ -1,8 +1,8 @@
 <template>
     <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" @click="$emit('prev')">Anterior</a>
-        <a class="pagination-next" @click="$emit('next')">Siguiente</a>
-        <p class="pagination-list">Mostrando {{pagination.from}} - {{pagination.to}} entradas de {{pagination.total}}</p>
+        <a class="pagination-previous" @click="$emit('prev')">Previous</a>
+        <a class="pagination-next" @click="$emit('next')">Next</a>
+        <p class="pagination-list">Showing {{pagination.from}} - {{pagination.to}} rows of {{pagination.total}}</p>
     </nav>
 </template>
 

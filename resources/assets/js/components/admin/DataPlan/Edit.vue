@@ -1,18 +1,18 @@
 <template>
     <div class="columns">
         <div class="column is-8 is-offset-2">
-            <h1 class="title">Editar</h1>
+            <h1 class="title">Edit</h1>
 
             <div class="box">
                 <form action="">
                     <div class="field">
-                        <label class="label">Nombre</label>
+                        <label class="label">Name</label>
                         <div class="control">
                             <input class="input" type="text" v-model="name" required>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Precio</label>
+                        <label class="label">Price</label>
                         <div class="field has-addons">
                             <p class="control"><a class="button is-static">$</a></p>
                             <p class="control is-expanded">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Costo de instalación</label>
+                        <label class="label">Setup price</label>
                         <div class="field has-addons">
                             <p class="control"><a class="button is-static">$</a></p>
                             <p class="control is-expanded">
@@ -34,10 +34,10 @@
                     <br>
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="button is-primary is-rounded" @click="editDataPlan">Editar</a>
+                            <a class="button is-primary is-rounded" @click="editDataPlan">Edit</a>
                         </p>
                         <p class="control">
-                            <a class="button is-light is-rounded" @click="goBack">Calcelar</a>
+                            <a class="button is-light is-rounded" @click="goBack">Cancel</a>
                         </p>
                     </div>
                 </form>
@@ -46,7 +46,7 @@
         </div>
 
         <notification color="is-danger" :show="shownotif" @close="shownotif = !shownotif">
-            ¡Ha ocurrido un error!
+            Oops. Something went wrong!
         </notification>
 
     </div>

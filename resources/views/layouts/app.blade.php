@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -17,16 +13,16 @@
     <div id="admin">
         <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:25px; padding-right: 25px;">
             <div class="navbar-brand">
-                <p class="navbar-item title is-5" style="font-weight: 700;">Lincon Dashboard</p>
+                <p class="navbar-item title is-5" style="font-weight: 700;">Vue Conctact App Dashboard</p>
             </div>
             <div class="navbar-menu is-active">
                 <div class="navbar-start">
                     @guest @else
                         <a class="navbar-item">
-                            <router-link to="/contacts">Solicitudes</router-link>
+                            <router-link to="/contacts">Contacts</router-link>
                         </a>
                         <a class="navbar-item">
-                            <router-link to="/dataplans">Planes</router-link>
+                            <router-link to="/dataplans">Data Plans</router-link>
                         </a>
                     @endguest
                 </div>
@@ -39,7 +35,7 @@
                             </a>
 
                             <div class="navbar-dropdown">
-                                <a class="navbar-item" href="{{ route('register') }}">Nuevo usuario</a>
+                                <a class="navbar-item" href="{{ route('register') }}">Register</a>
                                 <a class="navbar-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">

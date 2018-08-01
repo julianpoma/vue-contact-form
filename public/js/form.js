@@ -13965,7 +13965,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -14011,7 +14010,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.get('/api/form/getdataplans').then(function (response) {
             _this.data_plans = response.data;
         }).then().catch(function (err) {
-            _this.notif.message = "¡Ha ocurrido un error!";
+            _this.notif.message = "Oops. Something went wrong!";
             _this.notif.color = "is-danger";
             _this.notif.show = true;
         });
@@ -14043,7 +14042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = 1;
             axios.post('/api/form/create', this.$data.formdata).then(function (response) {
-                _this4.notif.message = "¡Se ha enviado su solicitud con exito! ¡Gracias por comunicarse con nosotros!";
+                _this4.notif.message = "Your request has been sent! We will get back to you soon!";
                 _this4.notif.color = "is-success";
                 _this4.notif.show = true;
                 _this4.clearForm();
@@ -14197,10 +14196,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['show']
@@ -14236,7 +14231,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-card" }, [
       _c("header", { staticClass: "modal-card-head" }, [
         _c("p", { staticClass: "modal-card-title" }, [
-          _vm._v("Terminos y condiciones del servicio.")
+          _vm._v("Terms and conditions.")
         ])
       ]),
       _vm._v(" "),
@@ -14244,43 +14239,19 @@ var staticRenderFns = [
         _c("ol", { staticStyle: { padding: "20px 20px" } }, [
           _c("li", [
             _vm._v(
-              "El servicio está sujeto a disponibilidad técnica y geográfica, determinado al momento de la instalación. Para más información por favor contáctenos en nuestras oficinas."
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cumque, consequuntur amet officia, alias ab beatae reprehenderit modi ipsum iure soluta voluptate illum explicabo labore quibusdam rem. Ea, debitis perferendis."
             )
           ]),
           _vm._v(" "),
           _c("li", [
             _vm._v(
-              "El contrato de suscripción al servicio tiene un periodo mínimo de vigencia de 6 meses."
+              "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed nulla consequuntur blanditiis odio minus a, consequatur accusantium eos tempora, recusandae aut error, incidunt perspiciatis unde quisquam quae sequi doloremque illo!"
             )
           ]),
           _vm._v(" "),
           _c("li", [
             _vm._v(
-              "Los equipos para la prestación del servicio son entregados a modo de comodato – excluye Router WiFi. El abonado es responsable del cuidado y devolución del mismo en perfecto estado a la finalización del contrato. En caso de robo, perdida, destrucción o cualquier otra causa, será responsabilidad del abonado la restitución del equipo o su equivalente económico."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Nuestro personal no realiza soporte técnico sobre los routers, computadoras o cualquier dispositivo del abonado, en caso de desconfiguración, mal uso o cualquier inconveniente. Sin embargo, están a disposición del abonado guías de configuración."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "El costo definido para la instalación es estándar y puede variar según la complejidad de la misma."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Una vez enviado los datos, se presume el compromiso de contratación de servicio."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Nuestros asistentes se contactaran con usted dentro de los próximos 5 días hábiles, desde el envío de la solicitud."
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum vero dolores ipsum et ullam nostrum ab eaque accusantium cupiditate reprehenderit maxime minima sequi, ad laborum deleniti dolorum reiciendis error praesentium!"
             )
           ])
         ])
@@ -14838,7 +14809,7 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
+                _c("label", { staticClass: "label" }, [_vm._v("Name")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -14871,7 +14842,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Apellido")]),
+                _c("label", { staticClass: "label" }, [_vm._v("Surname")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -14906,9 +14877,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [
-                  _vm._v("Documento (DNI)")
-                ]),
+                _c("label", { staticClass: "label" }, [_vm._v("Personal ID")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -14944,17 +14913,10 @@ var render = function() {
                 "div",
                 { staticClass: "field" },
                 [
-                  _c("label", { staticClass: "label" }, [
-                    _vm._v("Dirección completa")
-                  ]),
+                  _c("label", { staticClass: "label" }, [_vm._v("Address")]),
                   _vm._v(" "),
                   _c("vue-google-autocomplete", {
-                    attrs: {
-                      id: "map",
-                      classname: "input",
-                      placeholder: "",
-                      country: "ar"
-                    },
+                    attrs: { id: "map", classname: "input", placeholder: "" },
                     on: { placechanged: _vm.getAddressData }
                   }),
                   _vm._v(" "),
@@ -14972,7 +14934,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
                 _c("label", { staticClass: "label" }, [
-                  _vm._v("Piso / Dpto / Casa")
+                  _vm._v("Address detail")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -15012,7 +14974,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Celular")]),
+                _c("label", { staticClass: "label" }, [_vm._v("Phone")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -15024,7 +14986,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "input",
-                  attrs: { type: "text", name: "phone", placeholder: "0341-" },
+                  attrs: { type: "text", name: "phone" },
                   domProps: { value: _vm.formdata.phone },
                   on: {
                     input: function($event) {
@@ -15046,7 +15008,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
                 _c("label", { staticClass: "label" }, [
-                  _vm._v("Teléfono alternativo")
+                  _vm._v("Alternative phone")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -15082,7 +15044,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Correo")]),
+                _c("label", { staticClass: "label" }, [_vm._v("Email")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -15094,11 +15056,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "input",
-                  attrs: {
-                    type: "email",
-                    name: "email",
-                    placeholder: "example@lincon.com"
-                  },
+                  attrs: { type: "email", name: "email" },
                   domProps: { value: _vm.formdata.email },
                   on: {
                     input: function($event) {
@@ -15120,7 +15078,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
                 _c("label", { staticClass: "label" }, [
-                  _vm._v("Plan a contratar")
+                  _vm._v("Select a data plan")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "select is-fullwidth" }, [
@@ -15177,20 +15135,20 @@ var render = function() {
               _vm.formdata.data_plan
                 ? _c("div", { staticClass: "field" }, [
                     _c("div", { staticClass: "notification is-primary" }, [
-                      _vm._v(
-                        "\n                        Costo de instalación: "
-                      ),
+                      _vm._v("\n                        Setup price: "),
                       _c("strong", [
                         _vm._v("$" + _vm._s(_vm.dataplan_setup_price))
                       ]),
-                      _vm._v(" -\n                        Abono mensual: "),
+                      _vm._v(" -\n                        Montly fee: "),
                       _c("strong", [_vm._v("$" + _vm._s(_vm.dataplan_price))])
                     ])
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Comentarios")]),
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Aditional information")
+                ]),
                 _vm._v(" "),
                 _c("textarea", {
                   directives: [
@@ -15264,7 +15222,7 @@ var render = function() {
                       }
                     }
                   }),
-                  _vm._v("\n                        He leido y acepto "),
+                  _vm._v("\n                        I agree with all "),
                   _c(
                     "a",
                     {
@@ -15274,7 +15232,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("todos los terminos y condiciones")]
+                    [_vm._v("terms and conditions")]
                   )
                 ]),
                 _vm._v(" "),
@@ -15295,7 +15253,7 @@ var render = function() {
                     staticClass: "button is-primary is-rounded",
                     class: [_vm.loading ? "is-loading" : ""]
                   },
-                  [_vm._v("Enviar solicitud")]
+                  [_vm._v("Submit")]
                 )
               ])
             ]

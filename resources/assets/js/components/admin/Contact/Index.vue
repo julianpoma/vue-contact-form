@@ -1,21 +1,21 @@
 <template>
     <div class="columns">
         <div class="column is-8 is-offset-2">
-            <h1 class="title">Solicitudes de servicio</h1>
+            <h1 class="title">Contacts</h1>
 
             <div class="dt-tools">
                 <div class="columns">
                     <div class="column is-5">
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input class="input is-rounded" type="text" placeholder="Buscar por nombre, dirección o teléfono" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
+                                <input class="input is-rounded" type="text" placeholder="Search by name, address or phone" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
                             </div>
                             <div class="control">
-                                <button class="button is-primary is-rounded" :class="[ searching ? 'is-loading' : '']" @click="search()" >Buscar</button>
+                                <button class="button is-primary is-rounded" :class="[ searching ? 'is-loading' : '']" @click="search()" >Search</button>
                             </div>
                         </div>
                         <label class="checkbox dt-filter">
-                            <input type="checkbox" v-model="tableData.all"> Mostrar todas las solicitudes
+                            <input type="checkbox" v-model="tableData.all"> Show all
                         </label>
                     </div>
                 </div>               

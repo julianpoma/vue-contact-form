@@ -5,31 +5,30 @@
             <div class="column is-half">
                 <form class="box form max" @submit.prevent="formSubmit">
                     <div class="field">
-                        <label class="label">Nombre</label>
+                        <label class="label">Name</label>
                         <input type="text" class="input" name="name" v-model="formdata.name">
                         <span class="help is-danger" v-text="errors.get('name')" v-if="errors.has('name')"></span>
                     </div>
 
                     <div class="field">
-                        <label class="label">Apellido</label>
+                        <label class="label">Surname</label>
                         <input type="text" class="input" name="surname" v-model="formdata.surname">
                         <span class="help is-danger" v-text="errors.get('surname')" v-if="errors.has('surname')"></span>
                     </div>
 
                     <div class="field">
-                        <label class="label">Documento (DNI)</label>
+                        <label class="label">Personal ID</label>
                         <input type="number" class="input" name="dni" v-model="formdata.dni">
                         <span class="help is-danger" v-text="errors.get('dni')" v-if="errors.has('dni')"></span>
                     </div>
 
                     <div class="field">
-                        <label class="label">Dirección completa</label>
+                        <label class="label">Address</label>
                         <vue-google-autocomplete
                             id="map"
                             classname="input"
                             placeholder=""
                             v-on:placechanged="getAddressData"
-                            country="ar"
                         >
                         </vue-google-autocomplete>
                         
@@ -37,31 +36,31 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Piso / Dpto / Casa</label>
+                        <label class="label">Address detail</label>
                         <input type="text" class="input" name="address_detail" v-model="formdata.address_detail">
                         <span class="help is-danger" v-text="errors.get('address_detail')" v-if="errors.has('address_detail')"></span>
                     </div>
 
                     <div class="field">
-                        <label class="label">Celular</label>
-                        <input type="text" class="input" name="phone" v-model="formdata.phone" placeholder="0341-">
+                        <label class="label">Phone</label>
+                        <input type="text" class="input" name="phone" v-model="formdata.phone">
                         <span class="help is-danger" v-text="errors.get('phone')" v-if="errors.has('phone')"></span>
                     </div>
                     
                     <div class="field">
-                        <label class="label">Teléfono alternativo</label>
+                        <label class="label">Alternative phone</label>
                         <input type="text" class="input" name="phone2" v-model="formdata.phone2">
                         <span class="help is-danger" v-text="errors.get('phone2')" v-if="errors.has('phone2')"></span>
                     </div>
 
                     <div class="field">
-                        <label class="label">Correo</label>
-                        <input type="email" class="input" name="email" v-model="formdata.email" placeholder="example@lincon.com">
+                        <label class="label">Email</label>
+                        <input type="email" class="input" name="email" v-model="formdata.email">
                         <span class="help is-danger" v-text="errors.get('email')" v-if="errors.has('email')"></span>
                     </div>
 
                     <div class="field">
-                        <label class="label">Plan a contratar</label>
+                        <label class="label">Select a data plan</label>
                         <div class="select is-fullwidth">
                             <select name="data_plan" v-model="formdata.data_plan">
                                 <option v-for="plan in data_plans" v-bind:key="plan.name">{{plan.name}}</option>
@@ -72,13 +71,13 @@
 
                     <div class="field" v-if="formdata.data_plan">
                         <div class="notification is-primary">
-                            Costo de instalación: <strong>${{dataplan_setup_price}}</strong> -
-                            Abono mensual: <strong>${{dataplan_price}}</strong>
+                            Setup price: <strong>${{dataplan_setup_price}}</strong> -
+                            Montly fee: <strong>${{dataplan_price}}</strong>
                         </div>
                     </div>
 
                     <div class="field">
-                        <label class="label">Comentarios</label>
+                        <label class="label">Aditional information</label>
                         <textarea class="textarea" name="notes" v-model="formdata.notes"></textarea>
                         <span class="help is-danger" v-text="errors.get('notes')" v-if="errors.has('notes')"></span>
                     </div>
@@ -86,14 +85,14 @@
                     <div class="field">
                         <label class="checkbox">
                             <input type="checkbox" name="terms" v-model="formdata.terms">
-                            He leido y acepto <a @click="modalshow = !modalshow">todos los terminos y condiciones</a>
+                            I agree with all <a @click="modalshow = !modalshow">terms and conditions</a>
                         </label>
                         <span class="help is-danger" v-text="errors.get('terms')" v-if="errors.has('terms')"></span>
                     </div>
 
                     <br>
                     <div class="buttons is-centered">
-                        <button class="button is-primary is-rounded" :class="[ loading ? 'is-loading' : '']">Enviar solicitud</button>
+                        <button class="button is-primary is-rounded" :class="[ loading ? 'is-loading' : '']">Submit</button>
                     </div>
 
                 </form>
@@ -156,7 +155,7 @@
             })
             .then()
             .catch(err => {
-                this.notif.message = "¡Ha ocurrido un error!";
+                this.notif.message = "Oops. Something went wrong!";
                 this.notif.color = "is-danger";
                 this.notif.show = true;
             });
@@ -178,7 +177,7 @@
                 this.loading = 1;
                 axios.post('/api/form/create', this.$data.formdata)
                 .then(response => {
-                    this.notif.message = "¡Se ha enviado su solicitud con exito! ¡Gracias por comunicarse con nosotros!";
+                    this.notif.message = "Your request has been sent! We will get back to you soon!";
                     this.notif.color = "is-success";
                     this.notif.show = true;
                     this.clearForm();
