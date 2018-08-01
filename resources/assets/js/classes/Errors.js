@@ -13,8 +13,8 @@ export default class Errors {
         this.errors = errors;
     }
 
-    clear(field) {
-        delete this.errors[field];
+    clear() {
+        this.errors = {}
     }
 
     has(field) {

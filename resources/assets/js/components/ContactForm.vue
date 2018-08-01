@@ -3,7 +3,7 @@
     <section>
         <div class="columns is-centered">
             <div class="column is-half">
-                <form class="box form max" @submit.prevent="formSubmit" @keydown="errors.clear($event.target.name)">
+                <form class="box form max" @submit.prevent="formSubmit">
                     <div class="field">
                         <label class="label">Nombre</label>
                         <input type="text" class="input" name="name" v-model="formdata.name">
@@ -63,7 +63,7 @@
                     <div class="field">
                         <label class="label">Plan a contratar</label>
                         <div class="select is-fullwidth">
-                            <select name="data_plan" v-model="formdata.data_plan" @click="errors.clear('data_plan')">
+                            <select name="data_plan" v-model="formdata.data_plan">
                                 <option v-for="plan in data_plans" v-bind:key="plan.name">{{plan.name}}</option>
                             </select>
                         </div>
@@ -85,7 +85,7 @@
 
                     <div class="field">
                         <label class="checkbox">
-                            <input type="checkbox" name="terms" v-model="formdata.terms" @click="errors.clear('terms')">
+                            <input type="checkbox" name="terms" v-model="formdata.terms">
                             He leido y acepto <a @click="modalshow = !modalshow">todos los terminos y condiciones</a>
                         </label>
                         <span class="help is-danger" v-text="errors.get('terms')" v-if="errors.has('terms')"></span>
@@ -145,6 +145,7 @@
                     show: false,
                     color: '',
                 },
+                
                 loading: 0,
             }
         }, 
@@ -181,6 +182,7 @@
                     this.notif.color = "is-success";
                     this.notif.show = true;
                     this.clearForm();
+                    this.errors.clear();
                 })
                 .catch(err => {
                     this.errors.record(err.response.data.errors);
@@ -208,7 +210,6 @@
             getAddressData(addressData, placeResultData, id)
             {
                 this.formdata.address = placeResultData.formatted_address;
-                this.errors.clear('address');
             }
         }
     }
