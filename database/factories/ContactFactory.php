@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\ServiceRequest::class, function (Faker $faker) {
+$factory->define(App\Contact::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'address' => $faker->address,
@@ -11,6 +11,6 @@ $factory->define(App\ServiceRequest::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'email' => $faker->safeEmail,
         'data_plan' => $faker->domainWord,
-        'check' => $faker->numberBetween(0,1),
+        'is_read' => $faker->numberBetween(0,1),
     ];
 });

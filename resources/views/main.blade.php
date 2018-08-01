@@ -23,12 +23,12 @@
             </section>
 
             <section class="main-section">
-                <request-form></request-form>
+                <contact-form></contact-form>
             </section>
         </div>
 
         @include('layouts.footer')
 
-        <script src="{{asset('js/app.js')}}"></script>
+        <script src="{{asset('js/form.js')}}"></script>
     </body>
 </html>

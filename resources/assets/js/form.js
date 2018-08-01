@@ -15,7 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('request-form', require('./components/RequestForm.vue'));
+Vue.component('contact-form', require('./components/ContactForm.vue'));
 
 const app = new Vue({
     el: '#app'

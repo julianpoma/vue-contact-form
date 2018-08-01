@@ -43,7 +43,7 @@ class DataPlanController extends Controller
         return response()->json("Data Plan updated!", 201);
     }
 
-    public function delete(DataPlan $dataplan)
+    public function destroy(DataPlan $dataplan)
     {
         $dataplan->delete();
 

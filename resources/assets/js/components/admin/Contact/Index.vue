@@ -8,10 +8,10 @@
                     <div class="column is-5">
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input class="input" type="text" placeholder="Buscar por nombre, dirección o teléfono" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
+                                <input class="input is-rounded" type="text" placeholder="Buscar por nombre, dirección o teléfono" v-model="tableData.search" @keydown.enter="fetchData(this.source)">
                             </div>
                             <div class="control">
-                                <button class="button is-primary" :class="[ searching ? 'is-loading' : '']" @click="search()" >Buscar</button>
+                                <button class="button is-primary is-rounded" :class="[ searching ? 'is-loading' : '']" @click="search()" >Buscar</button>
                             </div>
                         </div>
                         <label class="checkbox dt-filter">
@@ -35,16 +35,20 @@
                             <td>{{row.phone}}</td>
                             <td>{{row.data_plan}}</td>
                             <td width="120px">{{row.created_at}}</td>
-                            <td class="has-text-right" width="100px">
-                                <span class="icon is-size-5 cursor-pointer" :class="[ row.check ? 'has-text-success': 'has-text-grey-lighter']" @click="togglCheckRow(row.id)">
+                            <td class="has-text-right" width="120px">
+                                <span class="icon is-size-5 cursor-pointer" :class="[ row.is_read ? 'has-text-success': 'has-text-grey-lighter']" @click="togglIsRead(row.id)">
                                     <i class="fas fa-check-circle"></i>
                                 </span>
 
-                                <router-link :to="{name:'requests-show', params:{ id: row.id }}">
+                                <router-link :to="{name:'contact-show', params:{ id: row.id }}">
                                     <span class="icon has-text-grey-lighter is-size-5 cursor-pointer">
                                         <i class="fas fa-eye"></i>
                                     </span>
                                 </router-link>
+
+                                <span class="icon has-text-grey-lighter cursor-pointer" @click="deleteContact(row.id)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
                             </td>
                         </tr>
                     </tbody>
@@ -82,7 +86,7 @@
                     from: '',
                     to: ''
                 },
-                source: '/api/servicerequests',
+                source: '/api/contacts',
             }
         },
         mounted() {
@@ -102,7 +106,7 @@
 
             search() {
                 this.searching = 1;
-                this.fetchData(this.source);
+                this.fetchData();
             },
 
             configPagination(data) {
@@ -115,14 +119,25 @@
                 this.pagination.from = data.from;
                 this.pagination.to = data.to;
             },
-
-            togglCheckRow(id) {
-                let url = '/api/servicerequests/' + id + '/toggl';
+            togglIsRead(id) {
+                let url = '/api/contact/' + id + '/toggl';
                 this.searching = 1;
 
                 axios.post(url, {})
                     .then(resp => this.fetchData())
                     .catch(err => console.log(err));
+            },
+            deleteContact(id) {
+                if(confirm("Esta seguro?"))
+                {
+                    axios.delete('/api/contact/' + id)
+                        .then(response => {
+                            this.fetchData();
+                        })
+                        .catch(err => {
+                            this.shownotif = true;
+                        });
+                }
             }
         }
     }

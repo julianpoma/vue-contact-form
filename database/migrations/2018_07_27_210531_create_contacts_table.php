@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceRequestsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateServiceRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_requests', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('address');
@@ -24,7 +24,7 @@ class CreateServiceRequestsTable extends Migration
             $table->string('email');
             $table->string('notes')->nullable();
             $table->string('data_plan');
-            $table->boolean('check')->default(0);
+            $table->boolean('is_read')->default(0);
 
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ class CreateServiceRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_requests');
+        Schema::dropIfExists('contacts');
     }
 }

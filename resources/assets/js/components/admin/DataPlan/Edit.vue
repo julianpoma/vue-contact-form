@@ -72,7 +72,7 @@
         },
         methods: {
             fetchData() {
-                axios.get('/api/dataplans/' + this.$route.params.id)
+                axios.get('/api/dataplan/' + this.$route.params.id)
                     .then(response => {
                         this.id = response.data.id;
                         this.name = response.data.name;
@@ -84,7 +84,7 @@
                     })
             },
             editDataPlan() {
-                axios.patch('/api/dataplans/' + this.id + '/edit', this.$data)
+                axios.patch('/api/dataplan/' + this.id + '/edit', this.$data)
                     .then(response => {
                         this.goBack();
                     })

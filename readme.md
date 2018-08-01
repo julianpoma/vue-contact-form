@@ -1,14 +1,19 @@
-# Vue-internet-form
+# Vue-contact-form
 
-This is an small contact form to request an Internet data plan service.
+A contact form app made with Laravel 5 and VueJS. It serves as a boiler plate. Feel free to adapt it to your own needs.
 
-It has an admin-panel with auth, where you can see all the request and setup the dataplans you offer.
+It includes a dashboard with auth, where you can see all the contacts you recived, mark them as read, and setup the dropdown menu options.
 
 The credentials are: 
 - email: `admin@admin.com`
 - password: `secret`
 
-Created with Laravel 5.6 and VueJS 2, using Axios and Bulma.
+Created with:
+- Laravel 5.6
+- VueJS 2
+- Vue Router
+- Axios
+- Bulma CSS
 
 # Try it out!
 

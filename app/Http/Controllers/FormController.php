@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\DataPlan;
-use App\ServiceRequest;
+use App\Contact;
 
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
     /**
-     * Store a new serviceRequest in the database
+     * Store a new contact in the database
      */
     public function store(Request $request)
     {
@@ -27,7 +27,7 @@ class FormController extends Controller
 
         $request['name'] = request('name').' '.request('surname');
         
-        ServiceRequest::create($request->all());
+        Contact::create($request->all());
 
         return response()->json(['message' => 'Solicitud enviada con exito. ¡Muchas gracias por ponerse en contacto!'], 201);
     }

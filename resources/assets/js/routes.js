@@ -1,12 +1,12 @@
 import VueRouter from 'vue-router';
 
 const routes = [
-    { path: '/requests', name: 'requests', component: require('./components/admin/ServicesRequest/Index.vue') },
-    { path: '/requests/:id', name: 'requests-show', component: require('./components/admin/ServicesRequest/Show.vue') },
-    { path: '/dataplans/', name: 'dataplans', component: require('./components/admin/DataPlans/Index.vue') },
-    { path: '/dataplans/create', name: 'dataplans-create', component: require('./components/admin/DataPlans/Create.vue') },
-    { path: '/dataplans/:id/edit', name: 'dataplans-edit', component: require('./components/admin/DataPlans/Edit.vue') },
-    { path: '/', redirect: '/requests'},
+    { path: '', redirect: '/contacts'},
+    { path: '/contacts', name: 'contacts', component: require('./components/admin/Contact/Index.vue') },
+    { path: '/contact/:id', name: 'contact-show', component: require('./components/admin/Contact/Show.vue') },
+    { path: '/dataplans/', name: 'dataplans', component: require('./components/admin/DataPlan/Index.vue') },
+    { path: '/dataplan/create', name: 'dataplan-create', component: require('./components/admin/DataPlan/Create.vue') },
+    { path: '/dataplan/:id/edit', name: 'dataplan-edit', component: require('./components/admin/DataPlan/Edit.vue') },
 ];
 
 export default new VueRouter({

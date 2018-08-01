@@ -6,7 +6,7 @@
                     <h1 class="title">Planes de datos</h1>
                 </div>
                 <div class="column is-4 has-text-right">
-                    <router-link :to="{name: 'dataplans-create'}">
+                    <router-link :to="{name: 'dataplan-create'}">
                         <button class="button is-primary is-rounded">Crear</button>
                     </router-link>
                 </div>
@@ -24,7 +24,7 @@
                             <td>${{row.price}}</td>
                             <td>${{row.setup_price}}</td>
                             <td>
-                                <router-link :to="{ name:'dataplans-edit', params:{ id: row.id }}">
+                                <router-link :to="{ name:'dataplan-edit', params:{ id: row.id }}">
                                     <span class="icon has-text-grey-lighter">
                                         <i class="fas fa-edit"></i>
                                     </span>
@@ -76,7 +76,7 @@
             deletePlan(id) {
                 if(confirm("Esta seguro?"))
                 {
-                    axios.delete('/api/dataplans/' + id)
+                    axios.delete('/api/dataplan/' + id)
                         .then(response => {
                             this.fetchData();
                         })

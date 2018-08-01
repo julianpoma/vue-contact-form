@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use \App\ServiceRequest;
+use \App\Contact;
 
 use Illuminate\Http\Request;
 
-class ServiceRequestController extends Controller
+class ContactController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +18,7 @@ class ServiceRequestController extends Controller
         $searchValue = request('search');
         $search_all = request('all');
 
-        $query = ServiceRequest::select('id', 'name', 'address', 'phone', 'data_plan', 'created_at', 'check');
+        $query = Contact::select('id', 'name', 'address', 'phone', 'data_plan', 'created_at', 'is_read');
 
         if($searchValue != '')
         {
@@ -29,25 +29,30 @@ class ServiceRequestController extends Controller
 
         if($search_all == "false")
         {
-            $query->where('check', 0);
+            $query->where('is_read', 0);
         }
 
         $model = $query->latest()->paginate(15);
-        $columns = ServiceRequest::$columns;
+        $columns = Contact::$columns;
         return response()->json(["model" => $model, "columns" => $columns], 200);
     }
 
-    public function togglServiceRequest(Request $request, ServiceRequest $service_request)
+    public function togglContact(Request $request, Contact $contact)
     {
-        $service_request->update([
-            'check' => !$service_request->check,
+        $contact->update([
+            'is_read' => !$contact->is_read,
         ]);
-
         return response()->json("Updated!", 200);
     }
 
-    public function show(ServiceRequest $service_request)
+    public function show(Contact $contact)
     {
-        return response()->json($service_request, 200);
+        return response()->json($contact, 200);
+    }
+
+    public function destroy (Contact $contact)
+    {
+        $contact->delete();
+        return response()->json("Contact deleted!", 201);
     }
 }

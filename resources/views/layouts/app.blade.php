@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Admin panel</title>
+    <title>Contact App Dashboard</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,17 +15,15 @@
 
 <body class="has-background-nova">
     <div id="admin">
-        <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:15px; padding-right: 15px;">
+        <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left:25px; padding-right: 25px;">
             <div class="navbar-brand">
                 <p class="navbar-item title is-5" style="font-weight: 700;">Lincon Dashboard</p>
             </div>
             <div class="navbar-menu is-active">
                 <div class="navbar-start">
                     @guest @else
-                        {{-- <a href="" class="navbar-item">Solicitudes</a> --}}
-                        {{-- <a href="" class="navbar-item">Planes</a> --}}
                         <a class="navbar-item">
-                            <router-link to="/requests">Solicitudes</router-link>
+                            <router-link to="/contacts">Solicitudes</router-link>
                         </a>
                         <a class="navbar-item">
                             <router-link to="/dataplans">Planes</router-link>
@@ -34,17 +32,23 @@
                 </div>
                 <div class="navbar-end">
                     @guest
-                        <a class="navbar-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @else
-                        <a class="navbar-item">{{ Auth::user()->name }}</a>
-                        <a class="navbar-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="{{ route('register') }}">Nuevo usuario</a>
+                                <a class="navbar-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
                     @endguest
                 </div>
             </div>

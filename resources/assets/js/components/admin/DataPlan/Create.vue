@@ -66,7 +66,7 @@
         },
         methods: {
             createDataPlan() {
-                axios.post('/api/dataplans/create', this.$data)
+                axios.post('/api/dataplan/create', this.$data)
                     .then(response => {
                         this.goBack();
                     })

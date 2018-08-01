@@ -11,7 +11,7 @@
                     <tr>
                         <th>Visto</th>
                         <td>
-                            <span class="icon is-size-4 cursor-pointer" :class="[ model.check ? 'has-text-success': 'has-text-light']" @click="togglCheckRow">
+                            <span class="icon is-size-4 cursor-pointer" :class="[ model.is_read ? 'has-text-success': 'has-text-grey-lighter']" @click="togglIsRead">
                                 <i class="fas fa-check-circle"></i>
                             </span>
                         </td>
@@ -53,7 +53,7 @@
                         <td>{{model.created_at}}</td>
                     </tr>
                 </table>
-            <button class="button is-primary is-rounded" @click="goBack()">Volver atrás</button>
+                <button class="button is-primary is-rounded" @click="goBack()">Volver atrás</button>
             </div>
         </div>
 
@@ -78,14 +78,14 @@
             }
         },
         mounted() {
-            this.url = '/api/servicerequests/' + this.$route.params.id;
+            this.url = '/api/contact/' + this.$route.params.id;
             this.fetchData();  
         },
         methods: {
             fetchData() {
                 axios.get(this.url).then(response => this.model = response.data);
             },
-            togglCheckRow() {
+            togglIsRead() {
                 axios.post(this.url + '/toggl', {})
                     .then(resp => this.fetchData())
                     .catch(err => {
