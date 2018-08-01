@@ -7,6 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <title>Solicitud de servicio | Lincon</title>
+        <script src="{{env('GOOGLE_MAPS')}}"></script>
     </head>
 
     <body>
